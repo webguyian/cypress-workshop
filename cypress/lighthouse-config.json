@@ -1,0 +1,13 @@
+{
+  "thresholds": {
+    "performance": 25,
+    "accessibility": 25
+  },
+  "lighthouseConfig": {
+    "formFactor": "desktop",
+    "screenEmulation": {
+      "disabled": true
+    },
+    "output": "html"
+  }
+}
