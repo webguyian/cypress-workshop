@@ -2,66 +2,63 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { DatePicker } from './date-picker';
 import { DataSelect } from './data-select';
+import type { User } from '@/types';
 
-export const DetailsForm = () => {
+type DetailsFormData = {
+  data: User;
+};
+
+export const DetailsForm = ({ data }: DetailsFormData) => {
   return (
-    <div className="grid gap-4 p-4">
+    <form method="post" className="grid gap-4 p-4">
       <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="name" className="text-right">
-          Topic
-        </Label>
-        <Input
-          id="topic"
-          value="Synergized fresh-thinking middleware"
-          className="col-span-3"
-        />
+        <Label htmlFor="name">Topic</Label>
+        <Input id="topic" defaultValue={data.topic} className="col-span-3" />
       </div>
       <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="name" className="text-right">
-          Presenter
-        </Label>
-        <Input id="name" value="Serene Barus" className="col-span-3" />
+        <Label htmlFor="name">Presenter</Label>
+        <Input id="name" defaultValue={data.name} className="col-span-3" />
       </div>
       <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="email" className="text-right">
-          Email
-        </Label>
+        <Label htmlFor="email">Email</Label>
         <Input
           id="email"
           type="email"
-          value="sbarus0@mynte.com"
+          defaultValue={data.email}
           className="col-span-3"
         />
       </div>
       <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="company" className="text-right">
-          Company
-        </Label>
-        <Input id="company" value="Mynte" className="col-span-3" />
+        <Label htmlFor="company">Company</Label>
+        <Input
+          id="company"
+          defaultValue={data.company}
+          className="col-span-3"
+        />
       </div>
       <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="duration" className="text-right">
-          Duration (min.)
-        </Label>
-        <Input id="duration" type="number" value="80" className="col-span-3" />
+        <Label htmlFor="duration">Duration (min.)</Label>
+        <Input
+          id="duration"
+          type="number"
+          defaultValue={data.duration}
+          className="col-span-3"
+        />
       </div>
       <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="date" className="text-right">
-          Date
-        </Label>
+        <Label htmlFor="date">Date</Label>
         <DatePicker
           id="date"
           className="col-span-3"
-          initialDate={new Date('2025-12-14T00:00:00')}
+          initialDate={new Date(`${data.date}T00:00:00`)}
         />
       </div>
       <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="status" className="text-right">
-          Status
-        </Label>
+        <Label htmlFor="status">Status</Label>
         <DataSelect
           id="status"
           className="col-span-3"
+          defaultValue={data.status}
           options={[
             {
               label: 'Pending',
@@ -85,9 +82,8 @@ export const DetailsForm = () => {
             }
           ]}
           placeholder="Select status"
-          value="review"
         />
       </div>
-    </div>
+    </form>
   );
 };

@@ -20,20 +20,15 @@ export const DatePicker = ({ className, id, initialDate }: DatePickerProps) => {
   const [date, setDate] = useState<Date | undefined>(initialDate);
 
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant={'outline'}
-          className={cn(
-            'w-full justify-start text-left font-normal',
-            !date && 'text-muted-foreground',
-            className
-          )}
-          id={id}
-        >
-          <CalendarIcon />
+    <Popover modal>
+      <PopoverTrigger
+        className={cn(!date && 'text-muted-foreground', className)}
+        id={id}
+      >
+        <div className="flex gap-2 text-sm items-center text-foreground border rounded-md p-2">
+          <CalendarIcon color="currentColor" size={20} />
           {date ? format(date, 'PPP') : <span>Choose a date</span>}
-        </Button>
+        </div>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
         <Calendar

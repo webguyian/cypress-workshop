@@ -16,21 +16,21 @@ type DataSelectOption = {
 
 type DataSelectProps = {
   className?: string;
+  defaultValue: string;
   id: string;
   options: DataSelectOption[];
   placeholder?: string;
-  value: string;
 };
 
 export const DataSelect = ({
   className,
+  defaultValue,
   id,
   options,
-  placeholder,
-  value
+  placeholder
 }: DataSelectProps) => {
   return (
-    <Select defaultValue={value}>
+    <Select defaultValue={defaultValue}>
       <SelectTrigger id={id} className={cn('w-full', className)}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
