@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { DetailsForm, Drawer } from './components';
-import USER_DATA from './data/speakers.json';
-import type { Users } from './types';
+import PRESENTER_DATA from './data/presenters.json';
+import type { Presenters } from './types';
 
 const App = () => {
-  const [users] = useState(USER_DATA as Users);
+  const [presenters] = useState(PRESENTER_DATA as Presenters);
 
   return (
     <main className="p-10 flex flex-col items-center">
@@ -12,12 +12,12 @@ const App = () => {
         Presenter Management
       </h1>
       <ul className="w-[500px] max-h-96 overflow-y-auto my-8 px-8 py-4">
-        {users.map((user) => (
-          <li key={user.email}>
+        {presenters.map((presenter) => (
+          <li key={presenter.email}>
             <div className="bg-gray-100 rounded-sm flex justify-between items-center mb-2 p-3">
-              <strong>{user.name}</strong>
+              <strong>{presenter.name}</strong>
               <Drawer>
-                <DetailsForm data={user} />
+                <DetailsForm data={presenter} />
               </Drawer>
             </div>
           </li>

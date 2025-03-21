@@ -2,10 +2,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { DatePicker } from './date-picker';
 import { DataSelect } from './data-select';
-import type { User } from '@/types';
+import type { Presenter } from '@/types';
 
 type DetailsFormData = {
-  data: User;
+  data: Presenter;
 };
 
 export const DetailsForm = ({ data }: DetailsFormData) => {

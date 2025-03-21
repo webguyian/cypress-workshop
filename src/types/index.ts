@@ -5,7 +5,7 @@ export type Status =
   | 'rejected'
   | 'completed';
 
-export type User = {
+export type Presenter = {
   name: string;
   company: string;
   email: string;
@@ -15,4 +15,4 @@ export type User = {
   status: Status;
 };
 
-export type Users = User[];
+export type Presenters = Presenter[];
