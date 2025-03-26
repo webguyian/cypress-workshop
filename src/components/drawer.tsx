@@ -9,15 +9,17 @@ import {
   SheetTitle,
   SheetTrigger
 } from '@/components/ui/sheet';
-import { DetailsForm } from './details-form';
+import type { ReactNode } from 'react';
 
-export const Drawer = () => {
+type DrawerProps = {
+  children: ReactNode;
+};
+
+export const Drawer = ({ children }: DrawerProps) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className="my-4" variant="outline">
-          Open drawer
-        </Button>
+        <Button variant="outline">Edit</Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
@@ -26,7 +28,7 @@ export const Drawer = () => {
             Make changes to the details here. Click save when you're done.
           </SheetDescription>
         </SheetHeader>
-        <DetailsForm />
+        {children}
         <SheetFooter>
           <SheetClose asChild>
             <Button type="submit">Save changes</Button>
