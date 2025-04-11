@@ -1,9 +1,7 @@
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
@@ -20,6 +18,7 @@ type DataSelectProps = {
   id: string;
   options: DataSelectOption[];
   placeholder?: string;
+  onValueChange?: (value: string) => void;
 };
 
 export const DataSelect = ({
@@ -27,10 +26,11 @@ export const DataSelect = ({
   defaultValue,
   id,
   options,
-  placeholder
+  placeholder,
+  onValueChange
 }: DataSelectProps) => {
   return (
-    <Select defaultValue={defaultValue}>
+    <Select defaultValue={defaultValue} onValueChange={onValueChange}>
       <SelectTrigger id={id} className={cn('w-full', className)}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
