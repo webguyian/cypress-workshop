@@ -1,7 +1,6 @@
 import { Row, Table } from '@tanstack/react-table';
 import { MoreVertical, PencilIcon, CheckIcon, XIcon } from 'lucide-react';
-import { Drawer } from '@/components/drawer';
-import { DetailsForm } from '@/components/details-form';
+import { DetailsForm, Drawer } from '@/components';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,

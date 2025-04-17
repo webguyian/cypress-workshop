@@ -1,4 +1,4 @@
-import { ActionCellProps } from '@/components/action-cell';
+import { ActionCellProps } from '@/components';
 import { formatPresenterData } from '@/lib/utils';
 import { useState } from 'react';
 import { toast } from 'sonner';

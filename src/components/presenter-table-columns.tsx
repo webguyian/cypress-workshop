@@ -1,7 +1,7 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { format, isWithinInterval } from 'date-fns';
 import { Badge } from '@/components/ui/badge';
-import { ActionCell } from '@/components/action-cell';
+import { ActionCell } from '@/components';
 import type { Presenter } from '@/types';
 
 export const columns: ColumnDef<Presenter>[] = [

@@ -8,11 +8,13 @@ import {
   SortingState,
   useReactTable
 } from '@tanstack/react-table';
-import { DataTable } from '@/components/data-table';
-import { columns } from '@/components/presenter-table-columns';
-import { DataTablePagination } from '@/components/data-table-pagination';
-import { PresenterTableFilters } from '@/components/presenter-table-filters';
-import { StatCards } from '@/components/stat-cards';
+import {
+  columns,
+  DataTable,
+  DataTablePagination,
+  PresenterTableFilters,
+  StatCards
+} from '@/components';
 import usePresenterData from '@/hooks/use-presenter-data';
 
 export function PresenterManagement() {

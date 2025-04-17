@@ -4,9 +4,12 @@ import { DateRange } from 'react-day-picker';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { DateRangePicker } from '@/components/date-range-picker';
-import { DurationSlider, DurationRange } from '@/components/duration-slider';
-import { StatusSelect } from '@/components/status-select';
+import {
+  DateRangePicker,
+  DurationSlider,
+  DurationRange,
+  StatusSelect
+} from '@/components';
 
 interface PresenterTableFiltersProps<TData> {
   table: Table<TData>;

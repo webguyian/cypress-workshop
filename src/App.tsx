@@ -1,4 +1,4 @@
-import { PresenterManagement } from '@/components/presenter-management';
+import { PresenterManagement } from '@/components';
 import { Toaster } from '@/components/ui/sonner';
 
 const App = () => {

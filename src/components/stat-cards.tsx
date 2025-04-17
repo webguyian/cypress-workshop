@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { StatCard } from '@/components/stat-card';
+import { StatCard } from '@/components';
 import type { Presenter } from '@/types';
 
 interface StatCardsProps {
