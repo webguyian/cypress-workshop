@@ -1,11 +1,8 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { format, isWithinInterval } from 'date-fns';
-import { Drawer } from '@/components/drawer';
-import { DetailsForm } from '@/components/details-form';
 import { Badge } from '@/components/ui/badge';
+import { ActionCell } from '@/components/action-cell';
 import type { Presenter } from '@/types';
-import { formatPresenterData } from '@/lib/utils';
-import { toast } from 'sonner';
 
 export const columns: ColumnDef<Presenter>[] = [
   {
@@ -75,34 +72,6 @@ export const columns: ColumnDef<Presenter>[] = [
   },
   {
     id: 'actions',
-    cell: ({ row, table }) => {
-      const presenter = row.original;
-      const updatePresenter = table.options.meta?.updateRow;
-      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        const formData = new FormData(event.currentTarget);
-        const data = formatPresenterData(
-          Object.fromEntries(formData.entries())
-        );
-
-        event.preventDefault();
-
-        if (data) {
-          updatePresenter?.(data);
-          toast.success('Presentation details updated successfully', {
-            description: `Updated ${data.name}'s presentation`
-          });
-        } else {
-          toast.error('Failed to update presentation details', {
-            description: 'Please try again or contact support'
-          });
-        }
-      };
-
-      return (
-        <Drawer>
-          <DetailsForm data={presenter} onSubmit={handleSubmit} />
-        </Drawer>
-      );
-    }
+    cell: (props) => <ActionCell {...props} />
   }
 ];

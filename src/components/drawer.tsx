@@ -11,13 +11,21 @@ import type { ReactNode } from 'react';
 
 type DrawerProps = {
   children: ReactNode;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  triggerElement?: ReactNode;
 };
 
-export const Drawer = ({ children }: DrawerProps) => {
+export const Drawer = ({
+  children,
+  open,
+  onOpenChange,
+  triggerElement
+}: DrawerProps) => {
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetTrigger asChild>
-        <Button variant="outline">Edit</Button>
+        {triggerElement || <Button variant="outline">Edit</Button>}
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
