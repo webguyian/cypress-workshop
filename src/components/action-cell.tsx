@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { Row, Table } from '@tanstack/react-table';
-import { MoreVertical } from 'lucide-react';
+import { MoreVertical, PencilIcon, CheckIcon, XIcon } from 'lucide-react';
 import { Drawer } from '@/components/drawer';
 import { DetailsForm } from '@/components/details-form';
 import { Button } from '@/components/ui/button';
@@ -11,42 +10,23 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import type { Presenter } from '@/types';
-import { formatPresenterData } from '@/lib/utils';
-import { toast } from 'sonner';
+import useRowActions from '@/hooks/use-row-actions';
 
-interface ActionCellProps {
+export interface ActionCellProps {
   row: Row<Presenter>;
   table: Table<Presenter>;
 }
 
 export const ActionCell = ({ row, table }: ActionCellProps) => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const presenter = row.original;
-  const updatePresenter = table.options.meta?.updateRow;
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const data = formatPresenterData(Object.fromEntries(formData.entries()));
-
-    if (data) {
-      updatePresenter?.(data);
-      setDrawerOpen(false);
-      toast.success('Presentation details updated successfully', {
-        description: `Updated ${data.name}'s presentation`
-      });
-    } else {
-      toast.error('Failed to update presentation details', {
-        description: 'Please try again or contact support'
-      });
-    }
-  };
-
-  const handleEdit = () => {
-    setDropdownOpen(false);
-    setDrawerOpen(true);
-  };
+  const {
+    actions,
+    data,
+    drawerOpen,
+    dropdownOpen,
+    setDrawerOpen,
+    setDropdownOpen
+  } = useRowActions({ row, table });
+  const { approve, edit, reject, submit } = actions;
 
   return (
     <Drawer
@@ -60,12 +40,23 @@ export const ActionCell = ({ row, table }: ActionCellProps) => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={handleEdit}>Edit</DropdownMenuItem>
+            <DropdownMenuItem onClick={edit}>
+              <PencilIcon className="h-4 w-4" />
+              Edit
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={approve}>
+              <CheckIcon className="h-4 w-4" />
+              Approve
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={reject} variant="destructive">
+              <XIcon className="h-4 w-4" />
+              Reject
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       }
     >
-      <DetailsForm data={presenter} onSubmit={handleSubmit} />
+      <DetailsForm data={data} onSubmit={submit} />
     </Drawer>
   );
 };
