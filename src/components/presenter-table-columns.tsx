@@ -5,6 +5,7 @@ import { DetailsForm } from '@/components/details-form';
 import { Badge } from '@/components/ui/badge';
 import type { Presenter } from '@/types';
 import { formatPresenterData } from '@/lib/utils';
+import { toast } from 'sonner';
 
 export const columns: ColumnDef<Presenter>[] = [
   {
@@ -87,6 +88,13 @@ export const columns: ColumnDef<Presenter>[] = [
 
         if (data) {
           updatePresenter?.(data);
+          toast.success('Presentation details updated successfully', {
+            description: `Updated ${data.name}'s presentation`
+          });
+        } else {
+          toast.error('Failed to update presentation details', {
+            description: 'Please try again or contact support'
+          });
         }
       };
 
