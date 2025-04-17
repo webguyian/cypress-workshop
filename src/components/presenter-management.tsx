@@ -12,6 +12,7 @@ import { DataTable } from '@/components/data-table';
 import { columns } from '@/components/presenter-table-columns';
 import { DataTablePagination } from '@/components/data-table-pagination';
 import { PresenterTableFilters } from '@/components/presenter-table-filters';
+import { StatCards } from '@/components/stat-cards';
 import type { Presenter } from '@/types';
 
 interface PresenterManagementProps {
@@ -55,7 +56,8 @@ export function PresenterManagement({ data }: PresenterManagementProps) {
           <div className="w-80 border-r">
             <PresenterTableFilters table={table} />
           </div>
-          <div className="flex-1 overflow-x-auto max-w-5xl p-6 space-y-4 mx-auto my-10">
+          <div className="flex-1 overflow-x-auto max-w-5xl p-6 space-y-4 mx-auto">
+            <StatCards data={data} />
             <div className="rounded-md border">
               <DataTable columns={columns} table={table} />
             </div>
