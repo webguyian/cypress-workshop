@@ -12,9 +12,10 @@ export function StatCards({ data }: StatCardsProps) {
     const approvedPresenters = data.filter(
       (p) => p.status === 'approved'
     ).length;
-    const avgDuration = Math.round(
+    const duration = Math.round(
       data.reduce((acc, p) => acc + p.duration, 0) / totalPresenters
     );
+    const avgDuration = isNaN(duration) ? 0 : duration;
     return { totalPresenters, approvedPresenters, avgDuration };
   }, [data]);
 

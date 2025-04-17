@@ -13,20 +13,19 @@ import { columns } from '@/components/presenter-table-columns';
 import { DataTablePagination } from '@/components/data-table-pagination';
 import { PresenterTableFilters } from '@/components/presenter-table-filters';
 import { StatCards } from '@/components/stat-cards';
-import type { Presenter } from '@/types';
+import usePresenterData from '@/hooks/use-presenter-data';
 
-interface PresenterManagementProps {
-  data: Presenter[];
-}
-
-export function PresenterManagement({ data }: PresenterManagementProps) {
+export function PresenterManagement() {
+  const [presenterData, updatePresenter] = usePresenterData();
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-
   const table = useReactTable({
-    data,
+    data: presenterData,
     columns,
+    meta: {
+      updateRow: updatePresenter
+    },
     state: {
       sorting,
       rowSelection,
@@ -57,7 +56,7 @@ export function PresenterManagement({ data }: PresenterManagementProps) {
             <PresenterTableFilters table={table} />
           </div>
           <div className="flex-1 overflow-x-auto max-w-5xl p-6 space-y-4 mx-auto">
-            <StatCards data={data} />
+            <StatCards data={presenterData} />
             <div className="rounded-md border">
               <DataTable columns={columns} table={table} />
             </div>

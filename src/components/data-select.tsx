@@ -30,7 +30,7 @@ export const DataSelect = ({
   onValueChange
 }: DataSelectProps) => {
   return (
-    <Select defaultValue={defaultValue} onValueChange={onValueChange}>
+    <Select name={id} defaultValue={defaultValue} onValueChange={onValueChange}>
       <SelectTrigger id={id} className={cn('w-full', className)}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
