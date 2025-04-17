@@ -64,6 +64,7 @@ export function DataTable<TData, TValue>({
             <TableRow
               key={row.id}
               data-state={row.getIsSelected() && 'selected'}
+              className="even:bg-white odd:bg-gray-50 hover:bg-gray-100"
             >
               {row.getVisibleCells().map((cell) => (
                 <TableCell key={cell.id}>
