@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 /// <reference types="@testing-library/cypress" />
 /// <reference types="@cypress-audit/lighthouse" />
- 
+
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -12,15 +12,5 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-
 // Example of a custom command:
 // Cypress.Commands.add('login', (email, password) => { ... })
-
-// You can also add custom commands to the existing Cypress interface:
-declare global {
-  namespace Cypress {
-    interface Chainable {
-      // login(email: string, password: string): Chainable<void>
-    }
-  }
-} 

@@ -12,7 +12,5 @@
     "types": ["cypress", "node", "@testing-library/cypress", "cypress-axe"],
     "moduleResolution": "node16",
     "module": "Node16"
-  },
-  "include": ["**/*.ts"],
-  "exclude": ["**/*.cy.tsx"]
+  }
 }

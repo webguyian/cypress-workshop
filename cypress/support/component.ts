@@ -14,19 +14,16 @@
 // ***********************************************
 
 // Import commands.js using ES2015 syntax:
-import "./commands"
-import "@testing-library/cypress/add-commands"
-
-import { mount } from "cypress/react18"
-import { ReactElement, createElement } from "react"
+import './commands';
+import '@testing-library/cypress/add-commands';
+import { mount } from 'cypress/react';
 
 declare global {
   namespace Cypress {
     interface Chainable {
-      mount: typeof mount
-      mountWithContex: (children: ReactElement) => Chainable<void>
+      mount: typeof mount;
     }
   }
 }
 
-Cypress.Commands.add("mount", mount)
+Cypress.Commands.add('mount', mount);

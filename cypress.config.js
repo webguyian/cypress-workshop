@@ -1,6 +1,6 @@
-const { defineConfig } = require('cypress')
+import { defineConfig } from 'cypress';
 
-module.exports = defineConfig({
+export default defineConfig({
   e2e: {
     baseUrl: 'http://localhost:5173', // Vite's default dev server port
     supportFile: 'cypress/support/e2e.ts',
@@ -8,14 +8,14 @@ module.exports = defineConfig({
     video: false,
     screenshotOnRunFailure: true,
     viewportWidth: 1280,
-    viewportHeight: 720,
+    viewportHeight: 720
   },
   component: {
     devServer: {
       framework: 'react',
-      bundler: 'vite',
+      bundler: 'vite'
     },
     specPattern: 'cypress/component/**/*.cy.{js,jsx,ts,tsx}',
-    supportFile: 'cypress/support/component.ts',
-  },
-}) 
+    supportFile: 'cypress/support/component.ts'
+  }
+});
