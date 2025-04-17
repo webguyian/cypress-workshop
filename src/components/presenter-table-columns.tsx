@@ -4,6 +4,7 @@ import { Drawer } from '@/components/drawer';
 import { DetailsForm } from '@/components/details-form';
 import { Badge } from '@/components/ui/badge';
 import type { Presenter } from '@/types';
+import { formatPresenterData } from '@/lib/utils';
 
 export const columns: ColumnDef<Presenter>[] = [
   {
@@ -18,7 +19,7 @@ export const columns: ColumnDef<Presenter>[] = [
     accessorKey: 'date',
     header: 'Date',
     cell: ({ row }) => {
-      return format(new Date(row.getValue('date')), 'PPP');
+      return format(new Date(`${row.getValue('date')}T00:00:00`), 'PPP');
     },
     filterFn: (row, columnId, filterValue) => {
       if (!filterValue) return true;
@@ -73,11 +74,25 @@ export const columns: ColumnDef<Presenter>[] = [
   },
   {
     id: 'actions',
-    cell: ({ row }) => {
+    cell: ({ row, table }) => {
       const presenter = row.original;
+      const updatePresenter = table.options.meta?.updateRow;
+      const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        const formData = new FormData(event.currentTarget);
+        const data = formatPresenterData(
+          Object.fromEntries(formData.entries())
+        );
+
+        event.preventDefault();
+
+        if (data) {
+          updatePresenter?.(data);
+        }
+      };
+
       return (
         <Drawer>
-          <DetailsForm data={presenter} />
+          <DetailsForm data={presenter} onSubmit={handleSubmit} />
         </Drawer>
       );
     }

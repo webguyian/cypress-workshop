@@ -1,902 +1,1002 @@
 [
   {
-    "name": "Serene Barus",
-    "company": "Mynte",
-    "email": "sbarus0@mynte.com",
-    "topic": "Synergized fresh-thinking middleware",
-    "date": "2025-12-14",
-    "duration": 80,
-    "status": "review"
-  },
-  {
-    "name": "Biron Finch",
-    "company": "Meemm",
-    "email": "bfinch1@meemm.com",
-    "topic": "Grass-roots impactful open system",
-    "date": "2025-03-02",
-    "duration": 85,
-    "status": "approved"
-  },
-  {
-    "name": "Cori Coursor",
-    "company": "Kaymbo",
-    "email": "ccoursor2@kaymbo.com",
-    "topic": "Sharable full-range initiative",
-    "date": "2025-03-26",
-    "duration": 70,
-    "status": "review"
-  },
-  {
-    "name": "Cindee Yackiminie",
-    "company": "Brainlounge",
-    "email": "cyackiminie3@brainlounge.com",
-    "topic": "Customer-focused dynamic framework",
-    "date": "2024-05-11",
-    "duration": 35,
-    "status": "completed"
-  },
-  {
-    "name": "Martainn Herreros",
-    "company": "Midel",
-    "email": "mherreros4@midel.com",
-    "topic": "Robust attitude-oriented open system",
-    "date": "2025-12-07",
-    "duration": 115,
-    "status": "approved"
-  },
-  {
-    "name": "Derril Hartegan",
-    "company": "Yoveo",
-    "email": "dhartegan5@yoveo.com",
-    "topic": "Programmable national time-frame",
-    "date": "2024-09-01",
-    "duration": 75,
-    "status": "approved"
-  },
-  {
-    "name": "Alfonse Dillinton",
-    "company": "Roombo",
-    "email": "adillinton6@roombo.com",
-    "topic": "Digitized disintermediate structure",
-    "date": "2024-12-31",
-    "duration": 30,
-    "status": "approved"
-  },
-  {
-    "name": "Adelind Winpenny",
-    "company": "Janyx",
-    "email": "awinpenny7@janyx.com",
-    "topic": "Realigned multimedia support",
-    "date": "2025-05-31",
-    "duration": 15,
-    "status": "completed"
-  },
-  {
-    "name": "Boy Lope",
-    "company": "Skippad",
-    "email": "blope8@skippad.com",
-    "topic": "Streamlined coherent paradigm",
-    "date": "2025-10-11",
-    "duration": 115,
-    "status": "completed"
-  },
-  {
-    "name": "Mitchael Pocknell",
-    "company": "Rhynoodle",
-    "email": "mpocknell9@rhynoodle.com",
-    "topic": "Implemented discrete circuit",
-    "date": "2024-08-03",
-    "duration": 20,
-    "status": "rejected"
-  },
-  {
-    "name": "Wilona Hagger",
-    "company": "Fivespan",
-    "email": "whaggera@fivespan.com",
-    "topic": "Synchronised attitude-oriented analyzer",
-    "date": "2025-09-24",
-    "duration": 120,
-    "status": "review"
-  },
-  {
-    "name": "Roderich Badland",
-    "company": "Twitternation",
-    "email": "rbadlandb@twitternation.com",
-    "topic": "Implemented interactive open system",
-    "date": "2024-04-27",
-    "duration": 105,
-    "status": "pending"
-  },
-  {
-    "name": "Winthrop O'Hallagan",
-    "company": "Blognation",
-    "email": "wohallaganc@blognation.com",
-    "topic": "Balanced 6th generation help-desk",
-    "date": "2024-06-05",
-    "duration": 50,
-    "status": "approved"
-  },
-  {
-    "name": "Trixie Baughn",
-    "company": "Skivee",
-    "email": "tbaughnd@skivee.com",
-    "topic": "Up-sized responsive policy",
-    "date": "2025-06-05",
-    "duration": 75,
-    "status": "approved"
-  },
-  {
-    "name": "Justinn Schutt",
-    "company": "Roodel",
-    "email": "jschutte@roodel.com",
-    "topic": "Reduced 6th generation capability",
-    "date": "2025-05-22",
-    "duration": 15,
-    "status": "review"
-  },
-  {
-    "name": "Greg Stoltz",
-    "company": "Zooveo",
-    "email": "gstoltzf@zooveo.com",
-    "topic": "Down-sized motivating policy",
-    "date": "2025-03-20",
-    "duration": 110,
-    "status": "approved"
-  },
-  {
-    "name": "Harli Crothers",
-    "company": "Skyba",
-    "email": "hcrothersg@skyba.com",
-    "topic": "Vision-oriented fresh-thinking model",
-    "date": "2025-05-24",
-    "duration": 45,
-    "status": "review"
-  },
-  {
-    "name": "Hilario Cheeseman",
-    "company": "Realblab",
-    "email": "hcheesemanh@realblab.com",
-    "topic": "Virtual regional middleware",
-    "date": "2025-12-25",
-    "duration": 10,
-    "status": "rejected"
-  },
-  {
-    "name": "Casandra Zelner",
-    "company": "Oozz",
-    "email": "czelneri@oozz.com",
-    "topic": "Vision-oriented system-worthy standardization",
-    "date": "2024-07-28",
-    "duration": 25,
-    "status": "pending"
-  },
-  {
-    "name": "Joann McConnachie",
-    "company": "Mynte",
-    "email": "jmcconnachiej@mynte.com",
-    "topic": "Business-focused logistical monitoring",
-    "date": "2024-11-09",
-    "duration": 110,
-    "status": "completed"
-  },
-  {
-    "name": "Mady Grishukov",
-    "company": "Pixonyx",
-    "email": "mgrishukovk@pixonyx.com",
-    "topic": "Face to face tertiary support",
-    "date": "2025-10-23",
-    "duration": 15,
-    "status": "completed"
-  },
-  {
-    "name": "Teodor Outerbridge",
-    "company": "Feedfish",
-    "email": "touterbridgel@feedfish.com",
-    "topic": "Universal responsive analyzer",
-    "date": "2025-09-16",
-    "duration": 50,
-    "status": "completed"
-  },
-  {
-    "name": "Tallou Manns",
-    "company": "Kamba",
-    "email": "tmannsm@kamba.com",
-    "topic": "Secured system-worthy algorithm",
-    "date": "2025-11-04",
-    "duration": 80,
-    "status": "review"
-  },
-  {
-    "name": "Gaspard McHardy",
-    "company": "Brightdog",
-    "email": "gmchardyn@brightdog.com",
-    "topic": "Phased mission-critical time-frame",
-    "date": "2025-11-24",
-    "duration": 30,
-    "status": "completed"
-  },
-  {
-    "name": "Derward Ollarenshaw",
-    "company": "Dablist",
-    "email": "dollarenshawo@dablist.com",
-    "topic": "Open-source logistical array",
-    "date": "2025-08-21",
-    "duration": 15,
-    "status": "review"
-  },
-  {
-    "name": "Belle Nias",
-    "company": "Jetpulse",
-    "email": "bniasp@jetpulse.com",
-    "topic": "Balanced systematic leverage",
-    "date": "2025-11-29",
-    "duration": 50,
-    "status": "rejected"
-  },
-  {
-    "name": "Dorena McRory",
-    "company": "Kwideo",
-    "email": "dmcroryq@kwideo.com",
-    "topic": "Virtual cohesive process improvement",
-    "date": "2025-03-02",
-    "duration": 105,
-    "status": "rejected"
-  },
-  {
-    "name": "Cheslie Conti",
-    "company": "Rhyloo",
-    "email": "ccontir@rhyloo.com",
-    "topic": "Polarised explicit core",
-    "date": "2025-06-02",
-    "duration": 30,
-    "status": "rejected"
-  },
-  {
-    "name": "Sherill Ingerith",
-    "company": "Gevee",
-    "email": "singeriths@gevee.com",
-    "topic": "Pre-emptive 24/7 adapter",
-    "date": "2024-05-13",
-    "duration": 105,
-    "status": "completed"
-  },
-  {
-    "name": "Gabriel Watkinson",
-    "company": "Rhycero",
-    "email": "gwatkinsont@rhycero.com",
-    "topic": "Right-sized impactful toolset",
-    "date": "2024-05-13",
-    "duration": 30,
-    "status": "rejected"
-  },
-  {
-    "name": "Ossie Mathie",
-    "company": "Livetube",
-    "email": "omathieu@livetube.com",
-    "topic": "Multi-layered holistic concept",
-    "date": "2025-01-22",
-    "duration": 70,
-    "status": "completed"
-  },
-  {
-    "name": "Georgine Smurfit",
-    "company": "Wikibox",
-    "email": "gsmurfitv@wikibox.com",
-    "topic": "Exclusive 24/7 firmware",
-    "date": "2025-03-23",
-    "duration": 10,
-    "status": "completed"
-  },
-  {
-    "name": "Roman Fosdike",
-    "company": "Voonder",
-    "email": "rfosdikew@voonder.com",
-    "topic": "Innovative high-level infrastructure",
-    "date": "2025-07-08",
-    "duration": 95,
-    "status": "review"
-  },
-  {
-    "name": "Dela Olliar",
-    "company": "Kwimbee",
-    "email": "dolliarx@kwimbee.com",
-    "topic": "Triple-buffered hybrid capacity",
-    "date": "2025-05-30",
-    "duration": 50,
-    "status": "approved"
-  },
-  {
-    "name": "Codee Coade",
-    "company": "Riffpedia",
-    "email": "ccoadey@riffpedia.com",
-    "topic": "Seamless demand-driven throughput",
+    "id": "ev65k4",
+    "name": "Roderic Roscow",
+    "company": "Meezzy",
+    "email": "rroscow0@netvibes.com",
+    "topic": "Future-proofed demand-driven database",
     "date": "2025-10-26",
-    "duration": 80,
-    "status": "completed"
+    "duration": 75,
+    "status": "approved"
   },
   {
-    "name": "El Saville",
-    "company": "Quatz",
-    "email": "esavillez@quatz.com",
-    "topic": "Configurable intermediate pricing structure",
-    "date": "2025-06-25",
-    "duration": 80,
+    "id": "om44p2",
+    "name": "Kylie Jurczik",
+    "company": "Voonix",
+    "email": "kjurczik1@google.com.hk",
+    "topic": "Ameliorated directional policy",
+    "date": "2025-06-10",
+    "duration": 55,
     "status": "review"
   },
   {
-    "name": "Templeton Snaith",
-    "company": "Browsedrive",
-    "email": "tsnaith10@browsedrive.com",
-    "topic": "Fully-configurable fresh-thinking productivity",
-    "date": "2025-09-04",
-    "duration": 45,
-    "status": "rejected"
-  },
-  {
-    "name": "Katheryn Rosenzwig",
-    "company": "Oodoo",
-    "email": "krosenzwig11@oodoo.com",
-    "topic": "Enterprise-wide maximized encryption",
-    "date": "2024-12-16",
+    "id": "jy16d2",
+    "name": "Shannan Kosel",
+    "company": "Skalith",
+    "email": "skosel2@amazon.co.jp",
+    "topic": "Automated optimizing function",
+    "date": "2025-07-14",
     "duration": 75,
     "status": "rejected"
   },
   {
-    "name": "Howie Mc-Kerley",
-    "company": "Wordify",
-    "email": "hmckerley12@wordify.com",
-    "topic": "Re-engineered responsive encryption",
-    "date": "2024-12-25",
-    "duration": 115,
-    "status": "completed"
-  },
-  {
-    "name": "Gale Havesides",
-    "company": "Realmix",
-    "email": "ghavesides13@realmix.com",
-    "topic": "Advanced heuristic conglomeration",
-    "date": "2024-06-15",
-    "duration": 100,
-    "status": "completed"
-  },
-  {
-    "name": "Jory Sturney",
-    "company": "Photobug",
-    "email": "jsturney14@photobug.com",
-    "topic": "Sharable clear-thinking architecture",
-    "date": "2025-01-22",
-    "duration": 100,
-    "status": "approved"
-  },
-  {
-    "name": "Whitman De Gogay",
-    "company": "Bubblebox",
-    "email": "wde15@bubblebox.com",
-    "topic": "Team-oriented zero defect infrastructure",
-    "date": "2024-11-04",
-    "duration": 45,
-    "status": "completed"
-  },
-  {
-    "name": "Dougie Rastall",
-    "company": "Katz",
-    "email": "drastall16@katz.com",
-    "topic": "Optional interactive neural-net",
-    "date": "2025-09-16",
-    "duration": 85,
-    "status": "approved"
-  },
-  {
-    "name": "Myron Groombridge",
-    "company": "Eidel",
-    "email": "mgroombridge17@eidel.com",
-    "topic": "Cross-platform scalable moratorium",
-    "date": "2025-09-12",
-    "duration": 25,
-    "status": "approved"
-  },
-  {
-    "name": "Micki Schoolfield",
-    "company": "Flipbug",
-    "email": "mschoolfield18@flipbug.com",
-    "topic": "Stand-alone user-facing implementation",
-    "date": "2025-01-17",
-    "duration": 20,
+    "id": "ux58y4",
+    "name": "Mechelle Mirfin",
+    "company": "Topiclounge",
+    "email": "mmirfin3@de.vu",
+    "topic": "Focused well-modulated budgetary management",
+    "date": "2025-07-08",
+    "duration": 80,
     "status": "pending"
   },
   {
-    "name": "Beatrisa Draysay",
-    "company": "Skynoodle",
-    "email": "bdraysay19@skynoodle.com",
-    "topic": "Managed secondary artificial intelligence",
-    "date": "2025-03-26",
-    "duration": 35,
-    "status": "review"
-  },
-  {
-    "name": "Eugenie Fairnington",
-    "company": "Photobug",
-    "email": "efairnington1a@photobug.com",
-    "topic": "Front-line 24 hour workforce",
-    "date": "2025-06-21",
-    "duration": 85,
-    "status": "review"
-  },
-  {
-    "name": "Rudy Coch",
-    "company": "Dynazzy",
-    "email": "rcoch1b@dynazzy.com",
-    "topic": "Synchronised interactive function",
-    "date": "2025-03-12",
-    "duration": 20,
-    "status": "rejected"
-  },
-  {
-    "name": "Audrey Glabach",
-    "company": "Photolist",
-    "email": "aglabach1c@photolist.com",
-    "topic": "Optional fault-tolerant knowledge user",
-    "date": "2025-10-02",
-    "duration": 85,
-    "status": "completed"
-  },
-  {
-    "name": "Hurleigh Ciccotto",
-    "company": "Jatri",
-    "email": "hciccotto1d@jatri.com",
-    "topic": "Multi-layered client-server methodology",
-    "date": "2025-04-12",
-    "duration": 75,
-    "status": "completed"
-  },
-  {
-    "name": "Efren Capelin",
-    "company": "Geba",
-    "email": "ecapelin1e@geba.com",
-    "topic": "Enterprise-wide clear-thinking concept",
-    "date": "2025-02-13",
-    "duration": 60,
-    "status": "rejected"
-  },
-  {
-    "name": "Griffin Camfield",
-    "company": "Meejo",
-    "email": "gcamfield1f@meejo.com",
-    "topic": "Fully-configurable client-driven process improvement",
-    "date": "2024-07-31",
-    "duration": 110,
-    "status": "review"
-  },
-  {
-    "name": "Terrel Forrest",
-    "company": "Riffpedia",
-    "email": "tforrest1g@riffpedia.com",
-    "topic": "De-engineered methodical benchmark",
-    "date": "2025-04-21",
-    "duration": 40,
-    "status": "review"
-  },
-  {
-    "name": "Carny De Simone",
-    "company": "Thoughtbeat",
-    "email": "cde1h@thoughtbeat.com",
-    "topic": "Reactive object-oriented policy",
-    "date": "2025-10-05",
-    "duration": 60,
-    "status": "pending"
-  },
-  {
-    "name": "Xymenes Valentin",
-    "company": "Topicblab",
-    "email": "xvalentin1i@topicblab.com",
-    "topic": "Adaptive needs-based moratorium",
-    "date": "2025-07-21",
-    "duration": 75,
-    "status": "approved"
-  },
-  {
-    "name": "Ardelis Skyner",
-    "company": "Eamia",
-    "email": "askyner1j@eamia.com",
-    "topic": "Networked neutral algorithm",
-    "date": "2025-05-31",
-    "duration": 95,
-    "status": "review"
-  },
-  {
-    "name": "Guilbert Abbate",
-    "company": "Quimm",
-    "email": "gabbate1k@quimm.com",
-    "topic": "Virtual explicit portal",
+    "id": "qw63k8",
+    "name": "Eyde Lampbrecht",
+    "company": "Twitterbridge",
+    "email": "elampbrecht4@umich.edu",
+    "topic": "Adaptive maximized capability",
     "date": "2025-07-01",
-    "duration": 15,
+    "duration": 45,
     "status": "review"
   },
   {
-    "name": "Brynna Meese",
-    "company": "Realbuzz",
-    "email": "bmeese1l@realbuzz.com",
-    "topic": "Ameliorated attitude-oriented Graphic Interface",
-    "date": "2024-11-05",
-    "duration": 25,
+    "id": "qq50k1",
+    "name": "Wilfrid Gaitskell",
+    "company": "Oyondu",
+    "email": "wgaitskell5@hibu.com",
+    "topic": "Synergistic 24/7 policy",
+    "date": "2025-08-24",
+    "duration": 35,
+    "status": "approved"
+  },
+  {
+    "id": "mi16a2",
+    "name": "Nil Kunkler",
+    "company": "Thoughtblab",
+    "email": "nkunkler6@statcounter.com",
+    "topic": "Up-sized asymmetric website",
+    "date": "2025-07-31",
+    "duration": 75,
+    "status": "approved"
+  },
+  {
+    "id": "dy83p3",
+    "name": "Giacinta Lorimer",
+    "company": "Gabtune",
+    "email": "glorimer7@php.net",
+    "topic": "Implemented system-worthy collaboration",
+    "date": "2025-10-04",
+    "duration": 65,
+    "status": "rejected"
+  },
+  {
+    "id": "cv65r4",
+    "name": "Tommy Scrimshire",
+    "company": "Photobug",
+    "email": "tscrimshire8@ucoz.com",
+    "topic": "Persistent national emulation",
+    "date": "2025-08-11",
+    "duration": 85,
     "status": "completed"
   },
   {
-    "name": "Lorain Butterworth",
-    "company": "Fliptune",
-    "email": "lbutterworth1m@fliptune.com",
-    "topic": "Cross-group systematic local area network",
-    "date": "2025-09-02",
-    "duration": 110,
-    "status": "approved"
-  },
-  {
-    "name": "Letty Huntriss",
-    "company": "Jabbersphere",
-    "email": "lhuntriss1n@jabbersphere.com",
-    "topic": "Optimized context-sensitive algorithm",
-    "date": "2025-04-04",
-    "duration": 115,
-    "status": "approved"
-  },
-  {
-    "name": "Flora Hancke",
-    "company": "Zoozzy",
-    "email": "fhancke1o@zoozzy.com",
-    "topic": "Optimized content-based adapter",
-    "date": "2025-01-03",
-    "duration": 75,
-    "status": "rejected"
-  },
-  {
-    "name": "Herschel Southcoat",
-    "company": "Jabbersphere",
-    "email": "hsouthcoat1p@jabbersphere.com",
-    "topic": "Integrated coherent budgetary management",
-    "date": "2025-07-18",
-    "duration": 90,
-    "status": "pending"
-  },
-  {
-    "name": "Mannie Ailward",
-    "company": "Skinix",
-    "email": "mailward1q@skinix.com",
-    "topic": "Digitized tertiary support",
-    "date": "2025-01-26",
-    "duration": 60,
-    "status": "review"
-  },
-  {
-    "name": "La verne Duly",
-    "company": "Zooveo",
-    "email": "lverne1r@zooveo.com",
-    "topic": "Upgradable mobile system engine",
-    "date": "2024-11-09",
-    "duration": 95,
-    "status": "rejected"
-  },
-  {
-    "name": "Aldin Paulino",
-    "company": "Riffwire",
-    "email": "apaulino1s@riffwire.com",
-    "topic": "Robust fresh-thinking array",
-    "date": "2025-06-24",
-    "duration": 100,
-    "status": "rejected"
-  },
-  {
-    "name": "Jewelle Mafham",
-    "company": "Vipe",
-    "email": "jmafham1t@vipe.com",
-    "topic": "Centralized actuating secured line",
-    "date": "2025-08-22",
-    "duration": 115,
-    "status": "approved"
-  },
-  {
-    "name": "Derron Leftridge",
-    "company": "Layo",
-    "email": "dleftridge1u@layo.com",
-    "topic": "Phased background definition",
-    "date": "2024-06-25",
+    "id": "bg40q4",
+    "name": "Thorin Zmitrovich",
+    "company": "Photolist",
+    "email": "tzmitrovich9@linkedin.com",
+    "topic": "Down-sized encompassing website",
+    "date": "2025-09-12",
     "duration": 70,
     "status": "rejected"
   },
   {
-    "name": "Wendy Altofts",
-    "company": "Dynabox",
-    "email": "waltofts1v@dynabox.com",
-    "topic": "Decentralized methodical website",
+    "id": "ib59l8",
+    "name": "Renault Dockrill",
+    "company": "Browsecat",
+    "email": "rdockrilla@dropbox.com",
+    "topic": "Inverse high-level orchestration",
+    "date": "2025-11-16",
+    "duration": 50,
+    "status": "completed"
+  },
+  {
+    "id": "hw38y9",
+    "name": "Rania Keene",
+    "company": "Oozz",
+    "email": "rkeeneb@weibo.com",
+    "topic": "Fundamental needs-based open architecture",
     "date": "2025-06-01",
-    "duration": 40,
-    "status": "pending"
-  },
-  {
-    "name": "Lynnelle Furmagier",
-    "company": "Trilia",
-    "email": "lfurmagier1w@trilia.com",
-    "topic": "Sharable leading edge firmware",
-    "date": "2025-12-04",
-    "duration": 80,
-    "status": "review"
-  },
-  {
-    "name": "Brandy Lansdale",
-    "company": "Thoughtmix",
-    "email": "blansdale1x@thoughtmix.com",
-    "topic": "Monitored client-server encryption",
-    "date": "2024-10-08",
     "duration": 50,
-    "status": "approved"
-  },
-  {
-    "name": "Tammy Bielfeldt",
-    "company": "Digitube",
-    "email": "tbielfeldt1y@digitube.com",
-    "topic": "Diverse 5th generation firmware",
-    "date": "2025-08-28",
-    "duration": 50,
-    "status": "completed"
-  },
-  {
-    "name": "Felicio Meugens",
-    "company": "Jayo",
-    "email": "fmeugens1z@jayo.com",
-    "topic": "Digitized intermediate Graphic Interface",
-    "date": "2025-06-07",
-    "duration": 100,
     "status": "pending"
   },
   {
-    "name": "Bartram Volke",
-    "company": "Trilia",
-    "email": "bvolke20@trilia.com",
-    "topic": "Visionary non-volatile data-warehouse",
-    "date": "2025-12-15",
-    "duration": 65,
-    "status": "completed"
-  },
-  {
-    "name": "Austine Cregeen",
-    "company": "Kazio",
-    "email": "acregeen21@kazio.com",
-    "topic": "Realigned global ability",
-    "date": "2025-11-14",
-    "duration": 65,
-    "status": "pending"
-  },
-  {
-    "name": "Carlin Honack",
-    "company": "Chatterbridge",
-    "email": "chonack22@chatterbridge.com",
-    "topic": "Ameliorated radical complexity",
-    "date": "2024-12-08",
-    "duration": 115,
+    "id": "gv91l9",
+    "name": "Thibaud Cops",
+    "company": "Zoombeat",
+    "email": "tcopsc@cafepress.com",
+    "topic": "Multi-tiered discrete firmware",
+    "date": "2025-10-12",
+    "duration": 60,
     "status": "rejected"
   },
   {
-    "name": "Clarance Willman",
-    "company": "Browseblab",
-    "email": "cwillman23@browseblab.com",
-    "topic": "Pre-emptive impactful success",
-    "date": "2024-10-16",
-    "duration": 35,
+    "id": "me89t4",
+    "name": "Hamil Rakes",
+    "company": "Teklist",
+    "email": "hrakesd@blogtalkradio.com",
+    "topic": "Down-sized non-volatile contingency",
+    "date": "2025-10-05",
+    "duration": 70,
+    "status": "pending"
+  },
+  {
+    "id": "rz19s3",
+    "name": "Katya Kilgrew",
+    "company": "Photospace",
+    "email": "kkilgrewe@mac.com",
+    "topic": "Face to face intermediate moratorium",
+    "date": "2025-05-06",
+    "duration": 45,
+    "status": "completed"
+  },
+  {
+    "id": "xr04d4",
+    "name": "Flora Harbor",
+    "company": "Zoomzone",
+    "email": "fharborf@google.it",
+    "topic": "Switchable directional flexibility",
+    "date": "2025-11-05",
+    "duration": 80,
+    "status": "pending"
+  },
+  {
+    "id": "ur01d5",
+    "name": "Selene Bapty",
+    "company": "Aibox",
+    "email": "sbaptyg@sitemeter.com",
+    "topic": "Visionary mobile interface",
+    "date": "2025-07-29",
+    "duration": 75,
     "status": "review"
   },
   {
-    "name": "Marsiella Ormesher",
-    "company": "Agimba",
-    "email": "mormesher24@agimba.com",
-    "topic": "Synergistic client-server middleware",
-    "date": "2025-12-09",
+    "id": "zb44r3",
+    "name": "Antonie Grevel",
+    "company": "Flipstorm",
+    "email": "agrevelh@usgs.gov",
+    "topic": "Diverse didactic paradigm",
+    "date": "2025-10-17",
+    "duration": 50,
+    "status": "pending"
+  },
+  {
+    "id": "qg84b8",
+    "name": "Belia Rape",
+    "company": "Buzzdog",
+    "email": "brapei@cnbc.com",
+    "topic": "Networked local Graphic Interface",
+    "date": "2025-06-07",
+    "duration": 45,
+    "status": "approved"
+  },
+  {
+    "id": "dd10s7",
+    "name": "Brendan Botterell",
+    "company": "Twitternation",
+    "email": "bbotterellj@wired.com",
+    "topic": "Adaptive maximized core",
+    "date": "2025-06-04",
+    "duration": 55,
+    "status": "completed"
+  },
+  {
+    "id": "xo41n4",
+    "name": "Gaelan Harome",
+    "company": "Voolia",
+    "email": "gharomek@themeforest.net",
+    "topic": "Streamlined stable complexity",
+    "date": "2025-10-02",
+    "duration": 80,
+    "status": "rejected"
+  },
+  {
+    "id": "mp69d6",
+    "name": "Umeko Allden",
+    "company": "Feedfire",
+    "email": "ualldenl@a8.net",
+    "topic": "Phased system-worthy system engine",
+    "date": "2025-07-05",
+    "duration": 60,
+    "status": "completed"
+  },
+  {
+    "id": "ps66f5",
+    "name": "Laurena Marjoram",
+    "company": "Flashpoint",
+    "email": "lmarjoramm@google.com",
+    "topic": "Centralized impactful adapter",
+    "date": "2025-05-04",
+    "duration": 50,
+    "status": "rejected"
+  },
+  {
+    "id": "fy24e6",
+    "name": "Lynnea Jekyll",
+    "company": "Meedoo",
+    "email": "ljekylln@bbb.org",
+    "topic": "Focused value-added functionalities",
+    "date": "2025-07-04",
+    "duration": 85,
+    "status": "pending"
+  },
+  {
+    "id": "mt34x7",
+    "name": "Kerwinn Corck",
+    "company": "Mynte",
+    "email": "kcorcko@people.com.cn",
+    "topic": "Implemented even-keeled pricing structure",
+    "date": "2025-10-12",
+    "duration": 65,
+    "status": "approved"
+  },
+  {
+    "id": "kt00a7",
+    "name": "Wilmer Fuentez",
+    "company": "Blognation",
+    "email": "wfuentezp@51.la",
+    "topic": "Total 4th generation functionalities",
+    "date": "2025-09-18",
+    "duration": 70,
+    "status": "completed"
+  },
+  {
+    "id": "ac02v1",
+    "name": "Temple Colbourne",
+    "company": "Jabberstorm",
+    "email": "tcolbourneq@google.com",
+    "topic": "Public-key coherent frame",
+    "date": "2025-06-06",
+    "duration": 80,
+    "status": "approved"
+  },
+  {
+    "id": "dl38t7",
+    "name": "Patricia Davy",
+    "company": "Realfire",
+    "email": "pdavyr@mapquest.com",
+    "topic": "Multi-lateral asymmetric frame",
+    "date": "2025-07-31",
+    "duration": 70,
+    "status": "approved"
+  },
+  {
+    "id": "tk00v4",
+    "name": "Luis Kellegher",
+    "company": "Roodel",
+    "email": "lkelleghers@cocolog-nifty.com",
+    "topic": "Persevering responsive circuit",
+    "date": "2025-07-19",
+    "duration": 65,
+    "status": "approved"
+  },
+  {
+    "id": "na00d8",
+    "name": "Eran Fanshawe",
+    "company": "Linktype",
+    "email": "efanshawet@hud.gov",
+    "topic": "Triple-buffered client-server collaboration",
+    "date": "2025-10-06",
+    "duration": 65,
+    "status": "pending"
+  },
+  {
+    "id": "ob38k4",
+    "name": "Lyssa Rollins",
+    "company": "Skidoo",
+    "email": "lrollinsu@umich.edu",
+    "topic": "Profound non-volatile portal",
+    "date": "2025-07-17",
+    "duration": 65,
+    "status": "pending"
+  },
+  {
+    "id": "gl42r7",
+    "name": "Wadsworth Elgie",
+    "company": "Linkbuzz",
+    "email": "welgiev@artisteer.com",
+    "topic": "User-centric 5th generation infrastructure",
+    "date": "2025-09-04",
     "duration": 55,
     "status": "rejected"
   },
   {
-    "name": "Lucine Southers",
-    "company": "Topicshots",
-    "email": "lsouthers25@topicshots.com",
-    "topic": "Optional bi-directional process improvement",
-    "date": "2024-04-15",
+    "id": "tv65u8",
+    "name": "Rebekkah Cornbill",
+    "company": "Muxo",
+    "email": "rcornbillw@columbia.edu",
+    "topic": "Decentralized 5th generation workforce",
+    "date": "2025-05-19",
+    "duration": 50,
+    "status": "completed"
+  },
+  {
+    "id": "qj29j2",
+    "name": "Alvie Fillan",
+    "company": "Bubbletube",
+    "email": "afillanx@paypal.com",
+    "topic": "Persevering heuristic flexibility",
+    "date": "2025-08-31",
+    "duration": 50,
+    "status": "pending"
+  },
+  {
+    "id": "pe93m8",
+    "name": "Chrisse Neward",
+    "company": "Mydo",
+    "email": "cnewardy@360.cn",
+    "topic": "Integrated impactful policy",
+    "date": "2025-06-05",
+    "duration": 55,
+    "status": "pending"
+  },
+  {
+    "id": "kk63u6",
+    "name": "Bernard Fossey",
+    "company": "Eayo",
+    "email": "bfosseyz@w3.org",
+    "topic": "Compatible needs-based groupware",
+    "date": "2025-12-11",
+    "duration": 85,
+    "status": "approved"
+  },
+  {
+    "id": "rw24y7",
+    "name": "Toby Mastrantone",
+    "company": "Jetwire",
+    "email": "tmastrantone10@wikispaces.com",
+    "topic": "Programmable mission-critical paradigm",
+    "date": "2025-07-11",
+    "duration": 90,
+    "status": "completed"
+  },
+  {
+    "id": "yt91j2",
+    "name": "Ashton Stampe",
+    "company": "Agivu",
+    "email": "astampe11@parallels.com",
+    "topic": "Digitized systematic ability",
+    "date": "2025-12-12",
+    "duration": 30,
+    "status": "review"
+  },
+  {
+    "id": "dx16j4",
+    "name": "Missie Kelshaw",
+    "company": "Gabtune",
+    "email": "mkelshaw12@stumbleupon.com",
+    "topic": "Universal multimedia challenge",
+    "date": "2025-07-13",
+    "duration": 80,
+    "status": "rejected"
+  },
+  {
+    "id": "cg66e8",
+    "name": "Jecho Avrasin",
+    "company": "Topicstorm",
+    "email": "javrasin13@wp.com",
+    "topic": "Programmable radical model",
+    "date": "2025-07-16",
+    "duration": 75,
+    "status": "rejected"
+  },
+  {
+    "id": "zq11p9",
+    "name": "Anastasia Weekley",
+    "company": "Riffpedia",
+    "email": "aweekley14@reuters.com",
+    "topic": "Front-line zero administration focus group",
+    "date": "2025-06-20",
+    "duration": 55,
+    "status": "pending"
+  },
+  {
+    "id": "mb46v4",
+    "name": "Cindie Oneal",
+    "company": "Ooba",
+    "email": "coneal15@marketwatch.com",
+    "topic": "Team-oriented eco-centric portal",
+    "date": "2025-06-24",
+    "duration": 85,
+    "status": "approved"
+  },
+  {
+    "id": "wh36h7",
+    "name": "Jennica Dannell",
+    "company": "Bluejam",
+    "email": "jdannell16@tiny.cc",
+    "topic": "Realigned 5th generation process improvement",
+    "date": "2025-07-09",
     "duration": 65,
     "status": "review"
   },
   {
-    "name": "Angelica Amps",
-    "company": "Jaxnation",
-    "email": "aamps26@jaxnation.com",
-    "topic": "Persevering cohesive adapter",
-    "date": "2025-01-03",
-    "duration": 70,
-    "status": "rejected"
-  },
-  {
-    "name": "Orelee Pascho",
-    "company": "Photojam",
-    "email": "opascho27@photojam.com",
-    "topic": "Devolved methodical budgetary management",
-    "date": "2025-10-24",
-    "duration": 110,
-    "status": "approved"
-  },
-  {
-    "name": "Seymour Blount",
-    "company": "Gabspot",
-    "email": "sblount28@gabspot.com",
-    "topic": "Business-focused needs-based website",
-    "date": "2024-10-22",
-    "duration": 105,
-    "status": "rejected"
-  },
-  {
-    "name": "Stafford Dewi",
-    "company": "Yozio",
-    "email": "sdewi29@yozio.com",
-    "topic": "User-friendly coherent toolset",
-    "date": "2025-11-05",
-    "duration": 50,
-    "status": "completed"
-  },
-  {
-    "name": "Blanch Dahlbom",
-    "company": "Jamia",
-    "email": "bdahlbom2a@jamia.com",
-    "topic": "Balanced multi-tasking capability",
-    "date": "2024-12-05",
-    "duration": 25,
-    "status": "approved"
-  },
-  {
-    "name": "Lyon Carhart",
-    "company": "Katz",
-    "email": "lcarhart2b@katz.com",
-    "topic": "Enhanced reciprocal array",
-    "date": "2025-10-27",
-    "duration": 40,
-    "status": "pending"
-  },
-  {
-    "name": "Gregorio Wooding",
-    "company": "Kazio",
-    "email": "gwooding2c@kazio.com",
-    "topic": "Decentralized coherent circuit",
-    "date": "2025-10-11",
-    "duration": 90,
-    "status": "completed"
-  },
-  {
-    "name": "Bailey Sapsforde",
-    "company": "Chatterpoint",
-    "email": "bsapsforde2d@chatterpoint.com",
-    "topic": "Cloned asymmetric artificial intelligence",
-    "date": "2024-09-18",
-    "duration": 10,
-    "status": "pending"
-  },
-  {
-    "name": "Agretha Seagrave",
-    "company": "Skyndu",
-    "email": "aseagrave2e@skyndu.com",
-    "topic": "Right-sized neutral standardization",
-    "date": "2025-02-23",
-    "duration": 110,
-    "status": "review"
-  },
-  {
-    "name": "Leeland Korneichik",
-    "company": "Jabberbean",
-    "email": "lkorneichik2f@jabberbean.com",
-    "topic": "Decentralized static hardware",
-    "date": "2025-11-04",
-    "duration": 40,
-    "status": "completed"
-  },
-  {
-    "name": "Rosetta Bingall",
-    "company": "Kimia",
-    "email": "rbingall2g@kimia.com",
-    "topic": "Extended contextually-based ability",
-    "date": "2025-11-07",
-    "duration": 90,
-    "status": "rejected"
-  },
-  {
-    "name": "Justis Duff",
-    "company": "Dabvine",
-    "email": "jduff2h@dabvine.com",
-    "topic": "Future-proofed next generation architecture",
-    "date": "2025-09-19",
-    "duration": 50,
-    "status": "review"
-  },
-  {
-    "name": "Fiann Crinage",
-    "company": "Digitube",
-    "email": "fcrinage2i@digitube.com",
-    "topic": "Versatile responsive capability",
-    "date": "2024-10-01",
+    "id": "gy96s5",
+    "name": "Jammal Slot",
+    "company": "Ooba",
+    "email": "jslot17@people.com.cn",
+    "topic": "Quality-focused transitional product",
+    "date": "2025-11-20",
     "duration": 45,
     "status": "pending"
   },
   {
-    "name": "Vinny Borrill",
-    "company": "Fiveclub",
-    "email": "vborrill2j@fiveclub.com",
-    "topic": "Realigned didactic support",
-    "date": "2025-04-19",
-    "duration": 50,
-    "status": "approved"
-  },
-  {
-    "name": "Kit Seefus",
-    "company": "Fiveclub",
-    "email": "kseefus2k@fiveclub.com",
-    "topic": "Optimized tangible knowledge base",
-    "date": "2024-07-25",
-    "duration": 35,
+    "id": "sk51t7",
+    "name": "Alia Swayne",
+    "company": "Abata",
+    "email": "aswayne18@wufoo.com",
+    "topic": "Virtual systemic standardization",
+    "date": "2025-06-24",
+    "duration": 75,
     "status": "rejected"
   },
   {
-    "name": "Hallsy Goodin",
-    "company": "Zoovu",
-    "email": "hgoodin2l@zoovu.com",
-    "topic": "Enhanced upward-trending conglomeration",
-    "date": "2024-09-12",
+    "id": "am22a0",
+    "name": "Wright Monelli",
+    "company": "Oyoloo",
+    "email": "wmonelli19@hc360.com",
+    "topic": "Managed logistical application",
+    "date": "2025-07-20",
+    "duration": 85,
+    "status": "review"
+  },
+  {
+    "id": "cc99g7",
+    "name": "Dom Leeman",
+    "company": "Skinder",
+    "email": "dleeman1a@cam.ac.uk",
+    "topic": "Visionary analyzing instruction set",
+    "date": "2025-06-21",
+    "duration": 45,
+    "status": "rejected"
+  },
+  {
+    "id": "yo68l0",
+    "name": "Lilyan Iffe",
+    "company": "Wikivu",
+    "email": "liffe1b@hao123.com",
+    "topic": "Horizontal background pricing structure",
+    "date": "2025-11-18",
+    "duration": 60,
+    "status": "review"
+  },
+  {
+    "id": "rj53r7",
+    "name": "Glori Warde",
+    "company": "Wikido",
+    "email": "gwarde1c@buzzfeed.com",
+    "topic": "Face to face foreground moratorium",
+    "date": "2025-10-02",
+    "duration": 75,
+    "status": "rejected"
+  },
+  {
+    "id": "nu66w7",
+    "name": "Franni Debenham",
+    "company": "Rooxo",
+    "email": "fdebenham1d@ebay.co.uk",
+    "topic": "Cloned motivating firmware",
+    "date": "2025-10-18",
+    "duration": 40,
+    "status": "rejected"
+  },
+  {
+    "id": "um67v1",
+    "name": "Meridith Malarkey",
+    "company": "Feedmix",
+    "email": "mmalarkey1e@columbia.edu",
+    "topic": "Advanced foreground application",
+    "date": "2025-09-21",
+    "duration": 60,
+    "status": "pending"
+  },
+  {
+    "id": "cp27y7",
+    "name": "Sonnnie Gadie",
+    "company": "Twitterbeat",
+    "email": "sgadie1f@upenn.edu",
+    "topic": "Reactive discrete leverage",
+    "date": "2025-06-20",
+    "duration": 45,
+    "status": "rejected"
+  },
+  {
+    "id": "zr34k6",
+    "name": "Becka Dalman",
+    "company": "Gabtype",
+    "email": "bdalman1g@shareasale.com",
+    "topic": "Function-based intangible strategy",
+    "date": "2025-06-06",
+    "duration": 85,
+    "status": "review"
+  },
+  {
+    "id": "qy39g8",
+    "name": "Lesli Bagshawe",
+    "company": "Wikido",
+    "email": "lbagshawe1h@mapy.cz",
+    "topic": "Synergistic 3rd generation neural-net",
+    "date": "2025-12-03",
+    "duration": 75,
+    "status": "review"
+  },
+  {
+    "id": "ts84x4",
+    "name": "Erv Cheshir",
+    "company": "Gigabox",
+    "email": "echeshir1i@examiner.com",
+    "topic": "Extended next generation application",
+    "date": "2025-07-19",
     "duration": 30,
+    "status": "approved"
+  },
+  {
+    "id": "aa99w3",
+    "name": "Kyrstin Whatsize",
+    "company": "Tavu",
+    "email": "kwhatsize1j@hostgator.com",
+    "topic": "Down-sized holistic encoding",
+    "date": "2025-05-09",
+    "duration": 60,
+    "status": "review"
+  },
+  {
+    "id": "ub91y1",
+    "name": "Korney Aysh",
+    "company": "Skyba",
+    "email": "kaysh1k@deviantart.com",
+    "topic": "Persistent global database",
+    "date": "2025-09-07",
+    "duration": 35,
+    "status": "review"
+  },
+  {
+    "id": "lq38y8",
+    "name": "Broderic Aveline",
+    "company": "Livepath",
+    "email": "baveline1l@discuz.net",
+    "topic": "Enterprise-wide context-sensitive knowledge base",
+    "date": "2025-09-13",
+    "duration": 65,
+    "status": "review"
+  },
+  {
+    "id": "qt47n3",
+    "name": "Eli de Mendoza",
+    "company": "Voonder",
+    "email": "ede1m@cam.ac.uk",
+    "topic": "Progressive explicit frame",
+    "date": "2025-11-29",
+    "duration": 60,
+    "status": "approved"
+  },
+  {
+    "id": "vx41q0",
+    "name": "Francene Witherop",
+    "company": "Zoovu",
+    "email": "fwitherop1n@google.fr",
+    "topic": "Down-sized transitional artificial intelligence",
+    "date": "2025-08-28",
+    "duration": 60,
+    "status": "review"
+  },
+  {
+    "id": "ha07u7",
+    "name": "Clywd Venour",
+    "company": "Thoughtstorm",
+    "email": "cvenour1o@squarespace.com",
+    "topic": "Upgradable foreground extranet",
+    "date": "2025-10-16",
+    "duration": 35,
     "status": "completed"
   },
   {
-    "name": "Bary Carmen",
-    "company": "Tagfeed",
-    "email": "bcarmen2m@tagfeed.com",
-    "topic": "Integrated fresh-thinking toolset",
-    "date": "2024-07-19",
-    "duration": 115,
-    "status": "approved"
-  },
-  {
-    "name": "Griffy M'Chirrie",
-    "company": "Realbridge",
-    "email": "gmchirrie2n@realbridge.com",
-    "topic": "Mandatory next generation success",
-    "date": "2025-03-30",
-    "duration": 110,
-    "status": "review"
-  },
-  {
-    "name": "Domeniga Clemon",
-    "company": "Jabbertype",
-    "email": "dclemon2o@jabbertype.com",
-    "topic": "Stand-alone zero defect model",
-    "date": "2025-04-24",
-    "duration": 30,
-    "status": "approved"
-  },
-  {
-    "name": "Demetre Antoshin",
-    "company": "Innojam",
-    "email": "dantoshin2p@innojam.com",
-    "topic": "Optional 24/7 synergy",
-    "date": "2025-10-24",
-    "duration": 20,
-    "status": "approved"
-  },
-  {
-    "name": "Reinald Slocomb",
-    "company": "Twitterwire",
-    "email": "rslocomb2q@twitterwire.com",
-    "topic": "Reverse-engineered reciprocal adapter",
-    "date": "2025-02-22",
-    "duration": 110,
-    "status": "review"
-  },
-  {
-    "name": "Trina Ingham",
-    "company": "Dabfeed",
-    "email": "tingham2r@dabfeed.com",
-    "topic": "Self-enabling bottom-line algorithm",
-    "date": "2024-04-07",
-    "duration": 120,
+    "id": "is13z8",
+    "name": "Gaby Lantiff",
+    "company": "Chatterpoint",
+    "email": "glantiff1p@wix.com",
+    "topic": "Streamlined asymmetric archive",
+    "date": "2025-07-26",
+    "duration": 85,
     "status": "rejected"
+  },
+  {
+    "id": "xk73o8",
+    "name": "Jae Vaneev",
+    "company": "Oba",
+    "email": "jvaneev1q@google.co.uk",
+    "topic": "Business-focused system-worthy process improvement",
+    "date": "2025-10-21",
+    "duration": 65,
+    "status": "review"
+  },
+  {
+    "id": "sb28u1",
+    "name": "Saundra Charlick",
+    "company": "Agivu",
+    "email": "scharlick1r@fc2.com",
+    "topic": "Stand-alone multi-tasking open system",
+    "date": "2025-09-13",
+    "duration": 60,
+    "status": "completed"
+  },
+  {
+    "id": "lq76v1",
+    "name": "Karney Mytton",
+    "company": "Skynoodle",
+    "email": "kmytton1s@dagondesign.com",
+    "topic": "Public-key optimal access",
+    "date": "2025-08-16",
+    "duration": 35,
+    "status": "review"
+  },
+  {
+    "id": "oc62o5",
+    "name": "Trudie Santus",
+    "company": "Snaptags",
+    "email": "tsantus1t@a8.net",
+    "topic": "Managed solution-oriented definition",
+    "date": "2025-08-03",
+    "duration": 90,
+    "status": "completed"
+  },
+  {
+    "id": "ux08u7",
+    "name": "Fredrick Cicerone",
+    "company": "Trilia",
+    "email": "fcicerone1u@usgs.gov",
+    "topic": "Self-enabling exuding capability",
+    "date": "2025-06-24",
+    "duration": 70,
+    "status": "review"
+  },
+  {
+    "id": "dk83i5",
+    "name": "Gallard Wager",
+    "company": "Browsecat",
+    "email": "gwager1v@utexas.edu",
+    "topic": "Robust fresh-thinking ability",
+    "date": "2025-08-21",
+    "duration": 55,
+    "status": "completed"
+  },
+  {
+    "id": "mf47s9",
+    "name": "Pall Vernall",
+    "company": "Omba",
+    "email": "pvernall1w@t.co",
+    "topic": "Total tertiary throughput",
+    "date": "2025-10-21",
+    "duration": 50,
+    "status": "completed"
+  },
+  {
+    "id": "if82b5",
+    "name": "Mariellen Wattingham",
+    "company": "Teklist",
+    "email": "mwattingham1x@diigo.com",
+    "topic": "Adaptive reciprocal conglomeration",
+    "date": "2025-12-05",
+    "duration": 90,
+    "status": "pending"
+  },
+  {
+    "id": "mq22d9",
+    "name": "Vevay Solesbury",
+    "company": "Oyope",
+    "email": "vsolesbury1y@nps.gov",
+    "topic": "Inverse static orchestration",
+    "date": "2025-05-21",
+    "duration": 50,
+    "status": "review"
+  },
+  {
+    "id": "cz94s0",
+    "name": "Margarethe MacFaul",
+    "company": "Aimbu",
+    "email": "mmacfaul1z@usgs.gov",
+    "topic": "Open-source global open architecture",
+    "date": "2025-07-15",
+    "duration": 30,
+    "status": "rejected"
+  },
+  {
+    "id": "sv82f8",
+    "name": "Cad Errowe",
+    "company": "Yombu",
+    "email": "cerrowe20@google.ru",
+    "topic": "Devolved human-resource contingency",
+    "date": "2025-08-20",
+    "duration": 65,
+    "status": "pending"
+  },
+  {
+    "id": "kq22k0",
+    "name": "Ame Helix",
+    "company": "Meemm",
+    "email": "ahelix21@xrea.com",
+    "topic": "Stand-alone discrete framework",
+    "date": "2025-11-29",
+    "duration": 85,
+    "status": "pending"
+  },
+  {
+    "id": "nm34q3",
+    "name": "Marlow Woller",
+    "company": "Eire",
+    "email": "mwoller22@marriott.com",
+    "topic": "Reactive executive utilisation",
+    "date": "2025-05-05",
+    "duration": 70,
+    "status": "review"
+  },
+  {
+    "id": "ou37s8",
+    "name": "Vitia Yves",
+    "company": "Trudeo",
+    "email": "vyves23@jimdo.com",
+    "topic": "Re-engineered scalable model",
+    "date": "2025-10-08",
+    "duration": 35,
+    "status": "review"
+  },
+  {
+    "id": "zy21d6",
+    "name": "Maurizia Cortes",
+    "company": "Thoughtstorm",
+    "email": "mcortes24@photobucket.com",
+    "topic": "User-centric uniform support",
+    "date": "2025-11-23",
+    "duration": 45,
+    "status": "approved"
+  },
+  {
+    "id": "vg30f1",
+    "name": "Ashbey Mudd",
+    "company": "Viva",
+    "email": "amudd25@reverbnation.com",
+    "topic": "Persevering real-time collaboration",
+    "date": "2025-09-23",
+    "duration": 40,
+    "status": "approved"
+  },
+  {
+    "id": "au05i6",
+    "name": "Darcey Waller-Bridge",
+    "company": "Tazz",
+    "email": "dwallerbridge26@si.edu",
+    "topic": "Balanced discrete adapter",
+    "date": "2025-12-04",
+    "duration": 90,
+    "status": "review"
+  },
+  {
+    "id": "hi29f2",
+    "name": "Marcille Codling",
+    "company": "Kare",
+    "email": "mcodling27@cbc.ca",
+    "topic": "Visionary hybrid moratorium",
+    "date": "2025-07-21",
+    "duration": 30,
+    "status": "review"
+  },
+  {
+    "id": "by03j5",
+    "name": "Katie Latty",
+    "company": "Mydo",
+    "email": "klatty28@tamu.edu",
+    "topic": "Versatile disintermediate initiative",
+    "date": "2025-10-17",
+    "duration": 65,
+    "status": "pending"
+  },
+  {
+    "id": "ye24t3",
+    "name": "Shay Mitcheson",
+    "company": "Eamia",
+    "email": "smitcheson29@businesswire.com",
+    "topic": "Re-contextualized stable secured line",
+    "date": "2025-08-03",
+    "duration": 70,
+    "status": "pending"
+  },
+  {
+    "id": "wh33u0",
+    "name": "Bay Perford",
+    "company": "Gevee",
+    "email": "bperford2a@walmart.com",
+    "topic": "Stand-alone encompassing infrastructure",
+    "date": "2025-05-20",
+    "duration": 45,
+    "status": "completed"
+  },
+  {
+    "id": "hp23k4",
+    "name": "Anabelle Heinssen",
+    "company": "Quinu",
+    "email": "aheinssen2b@bizjournals.com",
+    "topic": "Horizontal local forecast",
+    "date": "2025-08-20",
+    "duration": 65,
+    "status": "pending"
+  },
+  {
+    "id": "eu71e0",
+    "name": "Stavro Culver",
+    "company": "Quatz",
+    "email": "sculver2c@posterous.com",
+    "topic": "Optional transitional encryption",
+    "date": "2025-05-07",
+    "duration": 65,
+    "status": "completed"
+  },
+  {
+    "id": "vu87t3",
+    "name": "Nancey Kemwal",
+    "company": "Buzzster",
+    "email": "nkemwal2d@go.com",
+    "topic": "Expanded hybrid core",
+    "date": "2025-07-15",
+    "duration": 55,
+    "status": "pending"
+  },
+  {
+    "id": "yg65n1",
+    "name": "Klaus Orteaux",
+    "company": "Muxo",
+    "email": "korteaux2e@artisteer.com",
+    "topic": "Monitored 24/7 monitoring",
+    "date": "2025-08-13",
+    "duration": 85,
+    "status": "approved"
+  },
+  {
+    "id": "oe46f6",
+    "name": "Richard Blamire",
+    "company": "Thoughtworks",
+    "email": "rblamire2f@noaa.gov",
+    "topic": "Compatible object-oriented projection",
+    "date": "2025-11-12",
+    "duration": 70,
+    "status": "rejected"
+  },
+  {
+    "id": "wn08y5",
+    "name": "Ben Cackett",
+    "company": "Mydo",
+    "email": "bcackett2g@opensource.org",
+    "topic": "Exclusive discrete portal",
+    "date": "2025-09-13",
+    "duration": 75,
+    "status": "completed"
+  },
+  {
+    "id": "wx88c8",
+    "name": "Marlin Brownlea",
+    "company": "JumpXS",
+    "email": "mbrownlea2h@free.fr",
+    "topic": "Innovative static local area network",
+    "date": "2025-06-16",
+    "duration": 50,
+    "status": "pending"
+  },
+  {
+    "id": "ll14z8",
+    "name": "Alic Baraclough",
+    "company": "Rhynyx",
+    "email": "abaraclough2i@discovery.com",
+    "topic": "Compatible 6th generation adapter",
+    "date": "2025-09-01",
+    "duration": 85,
+    "status": "approved"
+  },
+  {
+    "id": "jb73m2",
+    "name": "Marjory Easterbrook",
+    "company": "Divavu",
+    "email": "measterbrook2j@vk.com",
+    "topic": "Quality-focused intermediate data-warehouse",
+    "date": "2025-11-11",
+    "duration": 60,
+    "status": "review"
+  },
+  {
+    "id": "od05i6",
+    "name": "Cathe McRoberts",
+    "company": "Realfire",
+    "email": "cmcroberts2k@google.es",
+    "topic": "Compatible local neural-net",
+    "date": "2025-11-14",
+    "duration": 55,
+    "status": "approved"
+  },
+  {
+    "id": "aq28u7",
+    "name": "Quincey Boxer",
+    "company": "Yambee",
+    "email": "qboxer2l@lycos.com",
+    "topic": "Realigned logistical flexibility",
+    "date": "2025-06-09",
+    "duration": 90,
+    "status": "review"
+  },
+  {
+    "id": "zf11a6",
+    "name": "Carolus Badham",
+    "company": "Feedfire",
+    "email": "cbadham2m@ftc.gov",
+    "topic": "Customizable full-range focus group",
+    "date": "2025-08-08",
+    "duration": 80,
+    "status": "review"
+  },
+  {
+    "id": "bm89l4",
+    "name": "Rudy Caitlin",
+    "company": "Abata",
+    "email": "rcaitlin2n@trellian.com",
+    "topic": "Open-architected responsive array",
+    "date": "2025-08-26",
+    "duration": 40,
+    "status": "pending"
+  },
+  {
+    "id": "wr72r6",
+    "name": "Siffre Dwyr",
+    "company": "Plajo",
+    "email": "sdwyr2o@columbia.edu",
+    "topic": "Decentralized transitional synergy",
+    "date": "2025-07-08",
+    "duration": 55,
+    "status": "rejected"
+  },
+  {
+    "id": "ha82f4",
+    "name": "Prent Wattins",
+    "company": "Photobug",
+    "email": "pwattins2p@aol.com",
+    "topic": "Reduced solution-oriented knowledge base",
+    "date": "2025-11-16",
+    "duration": 30,
+    "status": "rejected"
+  },
+  {
+    "id": "fg25g9",
+    "name": "Esther Manvelle",
+    "company": "Twinder",
+    "email": "emanvelle2q@furl.net",
+    "topic": "Virtual clear-thinking adapter",
+    "date": "2025-05-24",
+    "duration": 45,
+    "status": "pending"
+  },
+  {
+    "id": "dn28u9",
+    "name": "Jeddy Gookey",
+    "company": "Skimia",
+    "email": "jgookey2r@europa.eu",
+    "topic": "Configurable non-volatile standardization",
+    "date": "2025-07-14",
+    "duration": 70,
+    "status": "approved"
   }
 ]
