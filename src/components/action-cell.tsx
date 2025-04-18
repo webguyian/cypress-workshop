@@ -32,7 +32,11 @@ export const ActionCell = ({ row, table }: ActionCellProps) => {
       open={drawerOpen}
       onOpenChange={setDrawerOpen}
       triggerElement={
-        <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
+        <DropdownMenu
+          open={dropdownOpen}
+          onOpenChange={setDropdownOpen}
+          modal={false}
+        >
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" size="icon">
               <MoreVertical className="h-4 w-4" />
