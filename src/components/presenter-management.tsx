@@ -16,12 +16,15 @@ import {
   StatCards
 } from '@/components';
 import usePresenterData from '@/hooks/use-presenter-data';
+import { cn } from '@/lib/utils';
 
 export function PresenterManagement() {
   const [presenterData, updatePresenter] = usePresenterData();
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [showFilters, setShowFilters] = useState(false);
+
   const table = useReactTable({
     data: presenterData,
     columns,
@@ -54,15 +57,27 @@ export function PresenterManagement() {
           </div>
         </div>
         <div className="flex flex-1 overflow-hidden">
-          <div className="w-80 border-r">
-            <PresenterTableFilters table={table} />
+          <div className={cn(
+            "transition-all duration-200 ease-in-out overflow-hidden",
+            showFilters ? "w-80" : "w-0"
+          )}>
+            <PresenterTableFilters 
+              table={table} 
+              showFilters={showFilters}
+              toggleFilters={setShowFilters}
+            />
           </div>
-          <div className="flex-1 overflow-x-auto max-w-5xl p-6 space-y-4 mx-auto">
-            <StatCards data={presenterData} />
-            <div className="rounded-md border">
-              <DataTable columns={columns} table={table} />
+          <div className={cn(
+            "flex-1 overflow-x-auto p-6 space-y-4 transition-all duration-200 ease-in-out",
+            showFilters ? "ml-0" : "ml-0"
+          )}>
+            <div className="max-w-5xl mx-auto space-y-4">
+              <StatCards data={presenterData} />
+              <div className="rounded-md border">
+                <DataTable columns={columns} table={table} />
+              </div>
+              <DataTablePagination table={table} />
             </div>
-            <DataTablePagination table={table} />
           </div>
         </div>
       </div>
