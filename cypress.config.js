@@ -1,3 +1,4 @@
+import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'cypress';
 
 export default defineConfig({
@@ -13,9 +14,19 @@ export default defineConfig({
   component: {
     devServer: {
       framework: 'react',
-      bundler: 'vite'
+      bundler: 'vite',
+      viteConfig: {
+        plugins: [tailwindcss()],
+        resolve: {
+          alias: {
+            '@': '/src'
+          }
+        }
+      }
     },
-    specPattern: 'cypress/component/**/*.cy.{js,jsx,ts,tsx}',
-    supportFile: 'cypress/support/component.ts'
+    specPattern: 'src/components/*.cy.{js,jsx,ts,tsx}',
+    supportFile: 'cypress/support/component.ts',
+    viewportWidth: 1280,
+    viewportHeight: 720
   }
 });

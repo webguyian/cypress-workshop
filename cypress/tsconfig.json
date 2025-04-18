@@ -1,16 +1,19 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "resolveJsonModule": true,
+    "baseUrl": ".",
     "jsx": "react",
     "paths": {
       "@badeball/cypress-cucumber-preprocessor": [
         "./node_modules/@badeball/cypress-cucumber-preprocessor/dist/subpath-entrypoints/*"
       ]
     },
-    "target": "es2017",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["cypress", "node", "@testing-library/cypress", "cypress-axe"],
     "moduleResolution": "node16",
-    "module": "Node16"
-  }
+    "module": "Node16",
+    "resolveJsonModule": true,
+    "target": "es2017",
+    "types": ["cypress", "node", "@testing-library/cypress", "cypress-axe"]
+  },
+  "include": ["**/*.ts", "**/*.tsx"]
 }

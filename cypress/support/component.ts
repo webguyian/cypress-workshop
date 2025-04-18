@@ -13,6 +13,9 @@
 // https://on.cypress.io/configuration
 // ***********************************************
 
+// Import global styles
+import '@/index.css';
+
 // Import commands.js using ES2015 syntax:
 import './commands';
 import '@testing-library/cypress/add-commands';
