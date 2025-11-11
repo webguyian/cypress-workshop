@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { SlidersHorizontal } from 'lucide-react';
 import { Table } from '@tanstack/react-table';
 import { DateRange } from 'react-day-picker';
 import { Input } from '@/components/ui/input';
@@ -13,20 +12,19 @@ import {
 } from '@/components';
 import { cn } from '@/lib/utils';
 
-
 interface PresenterTableFiltersProps<TData> {
   table: Table<TData>;
   showFilters: boolean;
-  toggleFilters: (show: boolean) => void;
 }
 
 export function PresenterTableFilters<TData>({
   table,
-  showFilters,
-  toggleFilters
+  showFilters
 }: PresenterTableFiltersProps<TData>) {
   const [dateRange, setDateRange] = useState<DateRange | null>(null);
-  const [durationRange, setDurationRange] = useState<DurationRange | null>(null);
+  const [durationRange, setDurationRange] = useState<DurationRange | null>(
+    null
+  );
   const [statusValue, setStatusValue] = useState<string>('');
 
   const columns = table
@@ -74,79 +72,68 @@ export function PresenterTableFilters<TData>({
   };
 
   return (
-    <>
-      <div className={cn(
-        "h-full bg-background border-r",
-        !showFilters && "hidden"
-      )}>
-        <div className="p-6">
-          <div className="mb-6">
-            <h2 className="text-lg font-semibold">Filters</h2>
-          </div>
+    <div
+      className={cn('h-full bg-background border-r', !showFilters && 'hidden')}
+    >
+      <div className="p-6">
+        <div className="mb-6">
+          <h2 className="text-lg font-semibold">Filters</h2>
+        </div>
 
-          <div className="space-y-6">
-            {columns.map((column) => {
-              if (column.id === 'date') {
-                return (
-                  <div key={column.id} className="space-y-2">
-                    <Label>Date Range</Label>
-                    <DateRangePicker
-                      id="date-range"
-                      initialDateRange={dateRange}
-                      onDateRangeChange={handleDateRangeChange}
-                    />
-                  </div>
-                );
-              } else if (column.id === 'duration') {
-                return (
-                  <div key={column.id} className="space-y-2">
-                    <Label>Duration</Label>
-                    <DurationSlider
-                      value={durationRange}
-                      onChange={handleDurationChange}
-                    />
-                  </div>
-                );
-              } else if (column.id === 'status') {
-                return (
-                  <div key={column.id} className="space-y-2">
-                    <Label>Status</Label>
-                    <StatusSelect
-                      value={statusValue}
-                      onChange={handleStatusChange}
-                    />
-                  </div>
-                );
-              } else {
-                return (
-                  <div key={column.id} className="space-y-2">
-                    <Label>
-                      {column.id.charAt(0).toUpperCase() + column.id.slice(1)}
-                    </Label>
-                    <Input
-                      value={(column.getFilterValue() as string) ?? ''}
-                      onChange={(e) => handleFilter(column.id, e.target.value)}
-                      placeholder={`Filter ${column.id}...`}
-                      className="w-full"
-                    />
-                  </div>
-                );
-              }
-            })}
-            <Button variant="outline" onClick={handleReset} className="w-full">
-              Reset All Filters
-            </Button>
-          </div>
+        <div className="space-y-6">
+          {columns.map((column) => {
+            if (column.id === 'date') {
+              return (
+                <div key={column.id} className="space-y-2">
+                  <Label>Date Range</Label>
+                  <DateRangePicker
+                    id="date-range"
+                    initialDateRange={dateRange}
+                    onDateRangeChange={handleDateRangeChange}
+                  />
+                </div>
+              );
+            } else if (column.id === 'duration') {
+              return (
+                <div key={column.id} className="space-y-2">
+                  <Label>Duration</Label>
+                  <DurationSlider
+                    value={durationRange}
+                    onChange={handleDurationChange}
+                  />
+                </div>
+              );
+            } else if (column.id === 'status') {
+              return (
+                <div key={column.id} className="space-y-2">
+                  <Label>Status</Label>
+                  <StatusSelect
+                    value={statusValue}
+                    onChange={handleStatusChange}
+                  />
+                </div>
+              );
+            } else {
+              return (
+                <div key={column.id} className="space-y-2">
+                  <Label>
+                    {column.id.charAt(0).toUpperCase() + column.id.slice(1)}
+                  </Label>
+                  <Input
+                    value={(column.getFilterValue() as string) ?? ''}
+                    onChange={(e) => handleFilter(column.id, e.target.value)}
+                    placeholder={`Filter ${column.id}...`}
+                    className="w-full"
+                  />
+                </div>
+              );
+            }
+          })}
+          <Button variant="outline" onClick={handleReset} className="w-full">
+            Reset All Filters
+          </Button>
         </div>
       </div>
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => toggleFilters(!showFilters)}
-        className="fixed left-4 top-4 z-50"
-      >
-        <SlidersHorizontal className="h-4 w-4" />
-      </Button>
-    </>
+    </div>
   );
 }
