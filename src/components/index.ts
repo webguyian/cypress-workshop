@@ -1,4 +1,4 @@
-export { ActionCell } from './action-cell';
+export { type ActionCellProps, ActionCell } from './action-cell';
 export { DataSelect } from './data-select';
 export { DataTablePagination } from './data-table-pagination';
 export { DataTable } from './data-table';

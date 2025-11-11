@@ -92,12 +92,13 @@ describe('ActionCell', () => {
   it('closes dropdown when clicking outside', () => {
     // Open dropdown
     cy.get('button[data-slot="dropdown-menu-trigger"]').click();
-    cy.findByText('Edit').should('be.visible');
+    cy.findByRole('menu').should('be.visible');
 
-    // Click outside
+    // TODO: Click outside
     cy.get('html').click(1000, 500);
+    // cy.get('body').click('bottomRight');
 
     // Verify dropdown is closed
-    cy.findByText('Edit').should('not.exist');
+    cy.findByRole('menu').should('not.exist');
   });
 });

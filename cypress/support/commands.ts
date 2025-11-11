@@ -14,3 +14,16 @@
 
 // Example of a custom command:
 // Cypress.Commands.add('login', (email, password) => { ... })
+
+Cypress.Commands.add('findByButton', (name) => {
+  return cy.findByRole('button', { name });
+});
+
+Cypress.Commands.add('findByRegex', (text) => {
+  return cy.contains(new RegExp(text, 'i'));
+});
+
+Cypress.Commands.add('validateField', (label: string, errorMessage: string) => {
+  cy.findByLabelText(label).clear().blur();
+  cy.findByText(errorMessage).should('be.visible');
+});

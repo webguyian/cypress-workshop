@@ -53,7 +53,7 @@ describe('StatCards', () => {
     cy.findByText('2').should('exist'); // Total presenters
 
     // Add another approved presenter
-    const updatedPresenters = [
+    const updatedPresenters: Presenter[] = [
       ...mockPresenters,
       {
         id: '3',

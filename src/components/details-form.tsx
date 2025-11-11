@@ -5,6 +5,7 @@ import { DatePicker } from './date-picker';
 import { DataSelect } from './data-select';
 import type { Presenter } from '@/types';
 import { SheetClose, SheetFooter } from './ui/sheet';
+import { useFormValidation } from '@/hooks/use-form-validation';
 
 type DetailsFormData = {
   data: Presenter;
@@ -12,37 +13,57 @@ type DetailsFormData = {
 };
 
 export const DetailsForm = ({ data, onSubmit }: DetailsFormData) => {
+  const { errors, handleBlur, hasErrors } = useFormValidation();
+
   return (
     <form method="post" onSubmit={onSubmit}>
       <input name="id" type="hidden" value={data.id} />
       <div className="grid gap-4 p-4">
         <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="topic">Topic</Label>
-          <Input
-            id="topic"
-            name="topic"
-            defaultValue={data.topic}
-            className="col-span-3"
-          />
+          <div className="col-span-3">
+            <Input
+              id="topic"
+              name="topic"
+              defaultValue={data.topic}
+              className="w-full"
+              onBlur={handleBlur}
+            />
+            {errors.topic && (
+              <p className="text-sm text-red-500 mt-1">{errors.topic}</p>
+            )}
+          </div>
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="name">Presenter</Label>
-          <Input
-            id="name"
-            name="name"
-            defaultValue={data.name}
-            className="col-span-3"
-          />
+          <div className="col-span-3">
+            <Input
+              id="name"
+              name="name"
+              defaultValue={data.name}
+              className="w-full"
+              onBlur={handleBlur}
+            />
+            {errors.name && (
+              <p className="text-sm text-red-500 mt-1">{errors.name}</p>
+            )}
+          </div>
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="email">Email</Label>
-          <Input
-            id="email"
-            name="email"
-            type="email"
-            defaultValue={data.email}
-            className="col-span-3"
-          />
+          <div className="col-span-3">
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              defaultValue={data.email}
+              className="w-full"
+              onBlur={handleBlur}
+            />
+            {errors.email && (
+              <p className="text-sm text-red-500 mt-1">{errors.email}</p>
+            )}
+          </div>
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="company">Company</Label>
@@ -55,13 +76,19 @@ export const DetailsForm = ({ data, onSubmit }: DetailsFormData) => {
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="duration">Duration (min.)</Label>
-          <Input
-            id="duration"
-            name="duration"
-            type="number"
-            defaultValue={data.duration}
-            className="col-span-3"
-          />
+          <div className="col-span-3">
+            <Input
+              id="duration"
+              name="duration"
+              type="number"
+              defaultValue={data.duration}
+              className="w-full"
+              onBlur={handleBlur}
+            />
+            {errors.duration && (
+              <p className="text-sm text-red-500 mt-1">{errors.duration}</p>
+            )}
+          </div>
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="date">Date</Label>
@@ -105,7 +132,9 @@ export const DetailsForm = ({ data, onSubmit }: DetailsFormData) => {
       </div>
       <SheetFooter>
         <SheetClose asChild>
-          <Button type="submit">Save changes</Button>
+          <Button type="submit" disabled={hasErrors}>
+            Save changes
+          </Button>
         </SheetClose>
       </SheetFooter>
     </form>
