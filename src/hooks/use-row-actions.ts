@@ -34,10 +34,17 @@ const useRowActions = ({ row, table }: ActionCellProps) => {
 
   const handleApprove = () => {
     setDropdownOpen(false);
-    updatePresenter?.({ id: presenter.id, status: 'approved' });
-    toast.success('Presentation approved', {
-      description: `${presenter.name}'s presentation has been approved`
-    });
+
+    if (presenter.status === 'review') {
+      // Only approve presenters in "review" status
+      updatePresenter?.({ id: presenter.id, status: 'approved' });
+
+      toast.success('Presentation approved', {
+        description: `${presenter.name}'s presentation has been approved`
+      });
+    } else {
+      toast.info(`Presenter is currently in ${presenter.status} status`);
+    }
   };
 
   const handleReject = () => {

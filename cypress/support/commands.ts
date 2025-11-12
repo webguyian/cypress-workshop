@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 /// <reference types="@testing-library/cypress" />
 /// <reference types="@cypress-audit/lighthouse" />
+import '@testing-library/cypress/add-commands';
 
 // ***********************************************
 // This example commands.ts shows you how to
@@ -15,6 +16,14 @@
 // Example of a custom command:
 // Cypress.Commands.add('login', (email, password) => { ... })
 
+Cypress.Commands.add('getApprovedCount', () => {
+  cy.findByRole('region', { name: /approved presenters/i })
+    .should('be.visible')
+    .findByText(/\d+/)
+    .should('be.visible')
+    .invoke('text')
+    .then((text) => parseInt(text, 10));
+  
 Cypress.Commands.add('findByButton', (name) => {
   return cy.findByRole('button', { name });
 });

@@ -24,6 +24,7 @@ import { mount } from 'cypress/react';
 declare global {
   namespace Cypress {
     interface Chainable {
+      getApprovedCount: () => Chainable<number>;
       mount: typeof mount;
       findByButton(name: string | RegExp): Chainable<JQuery<HTMLElement>>;
       findByRegex(text: string | RegExp): Chainable<JQuery<HTMLElement>>;

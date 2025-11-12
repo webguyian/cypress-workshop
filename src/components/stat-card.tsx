@@ -15,6 +15,7 @@ export function StatCard({
   className,
   color = 'default'
 }: StatCardProps) {
+  const cardId = title.toLowerCase().replace(/\s+/g, '-');
   const colorStyles = {
     blue: 'bg-blue-100 text-blue-800',
     green: 'bg-green-100 text-green-800',
@@ -23,9 +24,12 @@ export function StatCard({
   }[color];
 
   return (
-    <Card className={`${colorStyles} ${className || ''}`}>
+    <Card
+      className={`${colorStyles} ${className || ''}`}
+      aria-labelledby={cardId}
+    >
       <CardHeader className="flex flex-row items-center justify-between space-y-0 p-4 sm:p-6">
-        <CardTitle className="text-sm font-bold line-clamp-2">
+        <CardTitle id={cardId} className="text-sm font-bold line-clamp-2">
           {title}
         </CardTitle>
       </CardHeader>
