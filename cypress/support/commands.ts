@@ -23,7 +23,8 @@ Cypress.Commands.add('getApprovedCount', () => {
     .should('be.visible')
     .invoke('text')
     .then((text) => parseInt(text, 10));
-  
+});
+
 Cypress.Commands.add('findByButton', (name) => {
   return cy.findByRole('button', { name });
 });
