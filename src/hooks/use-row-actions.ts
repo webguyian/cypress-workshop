@@ -10,9 +10,10 @@ const useRowActions = ({ row, table }: ActionCellProps) => {
   const updatePresenter = table.options.meta?.updateRow;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const data = formatPresenterData(Object.fromEntries(formData.entries()));
+
+    event.preventDefault();
 
     if (data) {
       updatePresenter?.(data);

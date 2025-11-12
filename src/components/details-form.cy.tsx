@@ -1,5 +1,6 @@
 import { DetailsForm } from '@/components';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
+import { formatPresenterData } from '@/lib/utils';
 import type { Presenter } from '@/types';
 
 describe('DetailsForm', () => {
@@ -31,24 +32,11 @@ describe('DetailsForm', () => {
     },
     format: {
       email: 'Invalid email format',
-      duration: 'Duration must be greater than 0'
+      duration: 'Duration must be between 10 and 120'
     }
   };
 
-  // TODO: Prevent default behavior of an event which is being spied on
-  // const preventDefault = (spy: typeof cy.spy) => {
-  //   return (event: React.FormEvent<HTMLFormElement>) => {
-  //     event.preventDefault();
-  //     return spy();
-  //   };
-  // };
-
   beforeEach(() => {
-    // TODO: Reset the mock presenter data before each test
-    // cy.fixture('presenter').then((presenter) => {
-    //   mockPresenter = presenter;
-    // });
-
     const onSubmit = cy.stub().as('onSubmit');
     cy.mount(
       <Sheet defaultOpen>
@@ -87,22 +75,22 @@ describe('DetailsForm', () => {
 
   it('validates required fields', () => {
     // Clear required fields and trigger validation
-    cy.findByLabelText(LABELS.topic).clear().blur();
-    cy.findByLabelText(LABELS.presenter).clear().blur();
-    cy.findByLabelText(LABELS.email).clear().blur();
-    cy.findByLabelText(LABELS.duration).clear().blur();
+    // cy.findByLabelText(LABELS.topic).clear().blur();
+    // cy.findByLabelText(LABELS.presenter).clear().blur();
+    // cy.findByLabelText(LABELS.email).clear().blur();
+    // cy.findByLabelText(LABELS.duration).clear().blur();
 
     // Check error messages
-    cy.findByText(ERRORS.required.topic).should('be.visible');
-    cy.findByText(ERRORS.required.presenter).should('be.visible');
-    cy.findByText(ERRORS.required.email).should('be.visible');
-    cy.findByText(ERRORS.required.duration).should('be.visible');
+    // cy.findByText(ERRORS.required.topic).should('be.visible');
+    // cy.findByText(ERRORS.required.presenter).should('be.visible');
+    // cy.findByText(ERRORS.required.email).should('be.visible');
+    // cy.findByText(ERRORS.required.duration).should('be.visible');
 
     // TODO: Clear required fields and trigger validation
-    // cy.validateField(LABELS.topic, ERRORS.required.topic);
-    // cy.validateField(LABELS.presenter, ERRORS.required.presenter);
-    // cy.validateField(LABELS.email, ERRORS.required.email);
-    // cy.validateField(LABELS.duration, ERRORS.required.duration);
+    cy.validateField(LABELS.topic, ERRORS.required.topic);
+    cy.validateField(LABELS.presenter, ERRORS.required.presenter);
+    cy.validateField(LABELS.email, ERRORS.required.email);
+    cy.validateField(LABELS.duration, ERRORS.required.duration);
 
     // Save button should be disabled
     cy.findByRole('button', { name: /save changes/i }).should('be.disabled');
@@ -122,7 +110,7 @@ describe('DetailsForm', () => {
     cy.findByText(ERRORS.format.email).should('not.exist');
   });
 
-  it('validates duration is greater than 0', () => {
+  it('validates duration is greater than 10', () => {
     // Enter invalid duration
     cy.findByLabelText(LABELS.duration).clear().type('0').blur();
 
@@ -141,14 +129,14 @@ describe('DetailsForm', () => {
     cy.findByLabelText(LABELS.date).click();
 
     // Wait for calendar to be visible
-    cy.get('.rdp').should('be.visible');
+    cy.findByRole('grid').should('be.visible');
 
     // TODO: Select a date (20th of the month)
-    cy.findByRole('gridcell', { name: /20/i }).click();
+    cy.findByRole('gridcell', { name: /20/ }).click();
     // cy.get('.rdp-day').contains('20').click();
 
     // Calendar should be closed
-    cy.get('.rdp').should('not.exist');
+    cy.findByRole('grid').should('not.exist');
   });
 
   it('handles status selection', () => {
@@ -181,5 +169,17 @@ describe('DetailsForm', () => {
 
     // Check if onSubmit was called
     cy.get('@onSubmit').should('have.been.called');
+    cy.get('@onSubmit').then((stub) => {
+      const sinonStub = stub as unknown as sinon.SinonStub;
+      const event = sinonStub.getCall(0).args[0];
+      const formData = new FormData(event.target as HTMLFormElement);
+      const data = formatPresenterData(Object.fromEntries(formData.entries()));
+
+      expect(data.topic).to.equal('Updated Topic');
+      expect(data.name).to.equal('Jane Smith');
+      expect(data.email).to.equal('jane@example.com');
+      expect(data.company).to.equal('New Company');
+      expect(data.duration).to.equal(45);
+    });
   });
 });
