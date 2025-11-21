@@ -103,7 +103,7 @@ export const DetailsForm = ({ data, onSubmit }: DetailsFormData) => {
           />
         </div>
         <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="status">Status</Label>
+          <Label id="status-label">Status</Label>
           <DataSelect
             id="status"
             className="col-span-3"
@@ -131,6 +131,7 @@ export const DetailsForm = ({ data, onSubmit }: DetailsFormData) => {
               }
             ]}
             placeholder="Select status"
+            ariaLabelledBy="status-label"
           />
         </div>
       </div>

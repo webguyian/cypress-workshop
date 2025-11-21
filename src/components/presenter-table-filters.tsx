@@ -104,22 +104,26 @@ export function PresenterTableFilters<TData>({
                 </div>
               );
             } else if (column.id === 'status') {
+              const statusLabelId = 'status-label';
               return (
                 <div key={column.id} className="space-y-2">
-                  <Label>Status</Label>
+                  <Label id={statusLabelId}>Status</Label>
                   <StatusSelect
                     value={statusValue}
                     onChange={handleStatusChange}
+                    ariaLabelledBy={statusLabelId}
                   />
                 </div>
               );
             } else {
+              const inputId = `${column.id}-filter-input`;
               return (
                 <div key={column.id} className="space-y-2">
-                  <Label>
+                  <Label htmlFor={inputId}>
                     {column.id.charAt(0).toUpperCase() + column.id.slice(1)}
                   </Label>
                   <Input
+                    id={inputId}
                     value={(column.getFilterValue() as string) ?? ''}
                     onChange={(e) => handleFilter(column.id, e.target.value)}
                     placeholder={`Filter ${column.id}...`}

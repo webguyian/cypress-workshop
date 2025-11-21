@@ -51,6 +51,7 @@ export function DateRangePicker({
                 !dateRange && "text-muted-foreground"
               )}
               id={id}
+              aria-label="Date range picker"
             >
               <CalendarIcon className="mr-2 h-4 w-4" />
               {dateRange?.from ? (

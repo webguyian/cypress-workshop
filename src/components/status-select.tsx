@@ -13,9 +13,10 @@ const STATUS_OPTIONS = [
 export type StatusSelectProps = {
   value: string;
   onChange: (value: string) => void;
+  ariaLabelledBy: string;
 };
 
-export function StatusSelect({ value, onChange }: StatusSelectProps) {
+export function StatusSelect({ value, onChange, ariaLabelledBy }: StatusSelectProps) {
   const handleChange = useCallback(
     (selectedValue: string) => {
       onChange(selectedValue === 'all' ? '' : selectedValue);
@@ -31,6 +32,7 @@ export function StatusSelect({ value, onChange }: StatusSelectProps) {
       placeholder="Select status"
       className="w-full"
       onValueChange={handleChange}
+      ariaLabelledBy={ariaLabelledBy}
     />
   );
 }

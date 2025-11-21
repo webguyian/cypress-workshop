@@ -19,6 +19,7 @@ type DataSelectProps = {
   options: DataSelectOption[];
   placeholder?: string;
   onValueChange?: (value: string) => void;
+  ariaLabelledBy: string;
 };
 
 export const DataSelect = ({
@@ -27,11 +28,16 @@ export const DataSelect = ({
   id,
   options,
   placeholder,
-  onValueChange
+  onValueChange,
+  ariaLabelledBy
 }: DataSelectProps) => {
   return (
     <Select name={id} defaultValue={defaultValue} onValueChange={onValueChange}>
-      <SelectTrigger id={id} className={cn('w-full', className)}>
+      <SelectTrigger 
+        id={id} 
+        className={cn('w-full', className)}
+        aria-labelledby={ariaLabelledBy}
+      >
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
