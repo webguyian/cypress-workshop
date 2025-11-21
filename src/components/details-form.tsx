@@ -20,7 +20,11 @@ export const DetailsForm = ({ data, onSubmit }: DetailsFormData) => {
   };
 
   return (
-    <form method="post" onSubmit={handleSubmit}>
+    <form
+      aria-label="Edit presentation details"
+      method="post"
+      onSubmit={handleSubmit}
+    >
       <input name="id" type="hidden" value={data.id} />
       <div className="grid gap-4 p-4">
         <div className="grid grid-cols-4 items-center gap-4">

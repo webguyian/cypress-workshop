@@ -1,4 +1,4 @@
-import { ActionCellProps } from '@/components';
+import type { ActionCellProps } from '@/components';
 import { formatPresenterData } from '@/lib/utils';
 import { useState } from 'react';
 import { toast } from 'sonner';
@@ -35,6 +35,8 @@ const useRowActions = ({ row, table }: ActionCellProps) => {
 
   const handleApprove = () => {
     setDropdownOpen(false);
+
+    console.log('Approving presenter:', presenter);
 
     if (presenter.status === 'review') {
       // Only approve presenters in "review" status

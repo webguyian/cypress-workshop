@@ -37,7 +37,7 @@ export const ActionCell = ({ row, table }: ActionCellProps) => {
           onOpenChange={setDropdownOpen}
           modal={false}
         >
-          <DropdownMenuTrigger asChild>
+          <DropdownMenuTrigger aria-label="Actions" asChild>
             <Button variant="ghost" size="icon">
               <MoreVertical className="h-4 w-4" />
             </Button>
