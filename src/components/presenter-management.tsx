@@ -57,6 +57,9 @@ export function PresenterManagement() {
               variant="ghost"
               size="icon"
               onClick={() => setShowFilters(!showFilters)}
+              aria-label="Toggle filters"
+              aria-expanded={showFilters}
+              aria-controls="filters-panel"
               title="Toggle filters"
             >
               <SlidersHorizontal className="h-4 w-4" />
@@ -68,6 +71,7 @@ export function PresenterManagement() {
         </div>
         <div className="flex flex-1 overflow-hidden">
           <div
+            id="filters-panel"
             className={cn(
               'transition-all duration-200 ease-in-out overflow-hidden',
               showFilters ? 'w-80' : 'w-0'

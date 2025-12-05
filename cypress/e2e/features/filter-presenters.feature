@@ -17,7 +17,7 @@ Feature: Filter Presenters
 
   Scenario: Resetting filters clears all filters and displays all presenters
     When the user filters by name with "NonExistentName123"
-    Then the user resets all filters
+    And the user resets all filters
     Then the table should display all presenters
     And all filter inputs should be cleared
 
