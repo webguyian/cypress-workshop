@@ -28,6 +28,7 @@ export function DurationSlider({
 
   useEffect(() => {
     if (value) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLocalValue([value.min, value.max]);
     } else {
       setLocalValue([min, max]);
@@ -56,6 +57,9 @@ export function DurationSlider({
         value={localValue}
         onValueChange={handleValueChange}
         className="w-full"
+        aria-label="Duration range"
+        aria-valuetext={`${localValue[0]} to ${localValue[1]} minutes`}
+        thumbLabels={['Min duration', 'Max duration']}
       />
     </div>
   );

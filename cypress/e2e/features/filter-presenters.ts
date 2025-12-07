@@ -10,31 +10,35 @@ const TABLE_COLUMNS = {
   ACTIONS: 5
 } as const;
 
+// Regex patterns for input labels
+const FILTER_LABELS = {
+  NAME: /^name$/i,
+  TOPIC: /^topic$/i,
+  STATUS: /^status$/i,
+  DATE_RANGE: /date range picker/i,
+  MIN_DURATION: 'Min duration',
+  MAX_DURATION: 'Max duration'
+};
+
 Given('the user is on the dashboard', () => {
   cy.visit('http://localhost:3000');
 });
 
 Given('the filters panel is visible', () => {
-  // Try to find the name input - if it doesn't exist or isn't visible, click toggle
-  cy.get('body').then(($body) => {
-    const nameInputExists =
-      $body.find('input[id*="name-filter-input"]:visible').length > 0;
-    if (!nameInputExists) {
-      // Filters are not visible, click to show them
-      cy.findByRole('button', { name: /toggle filters/i })
-        .should('be.visible')
-        .click()
-        .should('have.attr', 'aria-expanded', 'true');
-    }
-  });
+  // Ensure the filters panel is open
+  cy.findByRole('button', { name: /toggle filters/i })
+    .should('be.visible')
+    .click()
+    .should('have.attr', 'aria-expanded', 'true');
 
-  cy.findByLabelText(/^name$/i).should('be.visible');
+  // Confirm filters are visible
+  cy.findByLabelText(FILTER_LABELS.NAME).should('be.visible');
 });
 
 let originalRowCount: number;
 
 Given('there are multiple presenters in the table', () => {
-  // Wait for table to load and create static alias for original unfiltered rows
+  // Store initial row count for later comparison
   cy.findByRole('table')
     .should('be.visible')
     .findAllByRole('row')
@@ -42,34 +46,25 @@ Given('there are multiple presenters in the table', () => {
     .as('presenterRows')
     .then(($rows) => {
       originalRowCount = $rows.length;
-      expect(originalRowCount).to.be.at.least(2);
+      cy.wrap(originalRowCount).should('be.gte', 2);
     });
 });
 
 Given('the user has applied multiple filters', () => {
-  // Apply name filter
-  cy.findByRole('textbox', { name: /^name$/i })
-    .should('be.visible')
-    .type('Roderic');
-
-  // Apply status filter
-  cy.findByRole('combobox', { name: /^status$/i })
-    .should('be.visible')
-    .click();
+  cy.findByLabelText(FILTER_LABELS.NAME).should('be.visible').type('Roderic');
+  cy.findByLabelText(FILTER_LABELS.STATUS).should('be.visible').click();
   cy.findByRole('option', { name: /pending/i }).click();
 });
 
 When('the user filters by name with {string}', (name: string) => {
-  cy.findByRole('textbox', { name: /^name$/i })
+  cy.findByLabelText(FILTER_LABELS.NAME)
     .should('be.visible')
     .clear()
     .type(name);
 });
 
 When('the user filters by status {string}', (status: string) => {
-  cy.findByRole('combobox', { name: /^status$/i })
-    .should('be.visible')
-    .click();
+  cy.findByLabelText(FILTER_LABELS.STATUS).should('be.visible').click();
   cy.findByRole('option', { name: new RegExp(status, 'i') }).click();
 });
 
@@ -82,12 +77,8 @@ When('the user resets all filters', () => {
 Then(
   'the table should only display presenters matching all filter criteria',
   () => {
-    // Verify filters actually changed the table (filtered rows differ from original)
-    cy.get('@presenterRows')
-      .its('length')
-      .then((filteredCount) => {
-        expect(filteredCount).to.be.at.most(originalRowCount);
-      });
+    // All visible rows must match the applied filters
+    cy.get('@presenterRows').its('length').should('be.lte', originalRowCount);
 
     cy.get('@presenterRows').each(($row) => {
       // Verify name contains "Roderic"
@@ -110,39 +101,40 @@ Then('the table should show at least one row', () => {
 });
 
 Then('the table should display "No results"', () => {
-  // Verify there is exactly one row (the "No results." row) and it contains the text
+  // Only the "No results." row should be present
   cy.get('@presenterRows')
     .should('have.length', 1)
     .should('contain.text', 'No results.');
 });
 
 Then('the table should display all presenters', () => {
-  // After reset, we should see all presenters again
-
-  // Verify reset restored all original rows
-  cy.get('@presenterRows').then(($resetRows) => {
-    cy.get('@presenterRows').then(($originalRows) => {
-      expect($resetRows.length).to.equal($originalRows.length);
-    });
-  });
-
-  cy.get('@presenterRows').should('have.length.at.least', 1);
+  // After reset, all presenters should be visible
+  cy.get('@presenterRows').its('length').should('eq', originalRowCount);
 });
 
 Then('all filter inputs should be cleared', () => {
   // Verify name input is empty
-  cy.findByRole('textbox', { name: /^name$/i }).should('have.value', '');
+  cy.findByLabelText(FILTER_LABELS.NAME).should('have.value', '');
 
   // Verify topic input is empty
-  cy.findByRole('textbox', { name: /^topic$/i }).should('have.value', '');
+  cy.findByLabelText(FILTER_LABELS.TOPIC).should('have.value', '');
 
   // Verify status select is reset (shows "All Statuses" when value is 'all')
-  cy.findByRole('combobox', { name: /^status$/i })
+  cy.findByLabelText(FILTER_LABELS.STATUS)
     .should('be.visible')
     .should('contain.text', 'All Statuses');
 
-  // Verify date range picker button is reset and shows placeholder
-  cy.findByRole('button', { name: /date range picker/i })
+  // Verify date range picker button shows placeholder
+  cy.findByRole('button', { name: FILTER_LABELS.DATE_RANGE })
     .should('be.visible')
     .should('contain.text', 'Pick a date range');
+
+  // Verify duration slider min and max thumbs are reset using accessible labels
+  cy.findByRole('slider', { name: FILTER_LABELS.MIN_DURATION })
+    .should('be.visible')
+    .should('have.attr', 'aria-valuenow', 0);
+
+  cy.findByRole('slider', { name: FILTER_LABELS.MAX_DURATION })
+    .should('be.visible')
+    .should('have.attr', 'aria-valuenow', 120);
 });
