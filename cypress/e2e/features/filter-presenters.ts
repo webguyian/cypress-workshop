@@ -50,12 +50,6 @@ Given('there are multiple presenters in the table', () => {
     });
 });
 
-Given('the user has applied multiple filters', () => {
-  cy.findByLabelText(FILTER_LABELS.NAME).should('be.visible').type('Roderic');
-  cy.findByLabelText(FILTER_LABELS.STATUS).should('be.visible').click();
-  cy.findByRole('option', { name: /pending/i }).click();
-});
-
 When('the user filters by name with {string}', (name: string) => {
   cy.findByLabelText(FILTER_LABELS.NAME)
     .should('be.visible')
@@ -75,23 +69,22 @@ When('the user resets all filters', () => {
 });
 
 Then(
-  'the table should only display presenters matching all filter criteria',
-  () => {
+  'the table should only display presenters matching {string} and {string}',
+  (name: string, status: string) => {
     // All visible rows must match the applied filters
     cy.get('@presenterRows').its('length').should('be.lte', originalRowCount);
 
     cy.get('@presenterRows').each(($row) => {
-      // Verify name contains "Roderic"
       cy.wrap($row)
         .findAllByRole('cell')
         .eq(TABLE_COLUMNS.NAME)
-        .should('contain.text', 'Roderic');
+        .should('contain.text', name);
 
       // Verify status is "approved"
       cy.wrap($row)
         .findAllByRole('cell')
         .eq(TABLE_COLUMNS.STATUS)
-        .should('contain.text', 'approved');
+        .should('contain.text', status);
     });
   }
 );
