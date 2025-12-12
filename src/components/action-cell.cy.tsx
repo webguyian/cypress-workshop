@@ -1,6 +1,7 @@
 import { ActionCell } from '@/components';
 import type { Presenter } from '@/types';
 import type { Row, Table } from '@tanstack/react-table';
+import { mockPresenters } from '@/const/mocks/presenters';
 
 const EDIT_MENU_TEXT = 'Edit';
 const APPROVE_MENU_TEXT = 'Approve';
@@ -8,16 +9,7 @@ const REJECT_MENU_TEXT = 'Reject';
 const SAVE_CHANGES_BUTTON_TEXT = 'Save changes';
 
 describe('ActionCell', () => {
-  const mockPresenter: Presenter = {
-    id: '1',
-    name: 'John Doe',
-    company: 'Test Co',
-    email: 'john@test.com',
-    topic: 'Testing',
-    date: '2025-04-17',
-    duration: 60,
-    status: 'review'
-  };
+  const mockPresenter = mockPresenters[0];
 
   beforeEach(() => {
     cy.on('uncaught:exception', () => {

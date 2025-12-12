@@ -9,7 +9,7 @@ export const mockPresenters: Presenter[] = [
     topic: 'React Testing',
     date: '2025-01-01',
     duration: 60,
-    status: 'pending'
+    status: 'review'
   },
   {
     id: '2',
@@ -18,7 +18,7 @@ export const mockPresenters: Presenter[] = [
     email: 'jane@tech.com',
     topic: 'Cypress Testing',
     date: '2025-02-01',
-    duration: 45,
+    duration: 30,
     status: 'approved'
   },
   {
@@ -28,7 +28,7 @@ export const mockPresenters: Presenter[] = [
     email: 'bob@dev.com',
     topic: 'TypeScript',
     date: '2025-03-01',
-    duration: 30,
-    status: 'completed'
+    duration: 90,
+    status: 'approved'
   }
-]; 
+];
