@@ -41,7 +41,8 @@ describe('PresenterTableFilters', () => {
     cy.findByRole('button', { name: /date range picker/i }).click();
     cy.findByRole('dialog').should('be.visible');
 
-    cy.findAllByRole('button', { name: /15/i })
+    // Match the full aria-label format like "January 15, 2025" for more specificity
+    cy.findAllByRole('button', { name: /\w+\s+15,\s+\d{4}/i })
       .first()
       .should('be.visible')
       .then(($firstButton) => {
@@ -50,7 +51,6 @@ describe('PresenterTableFilters', () => {
         if (firstMatch) {
           const [, month, year] = firstMatch;
           cy.wrap($firstButton).click();
-          cy.wait(200);
           cy.findByRole('dialog').should('be.visible');
           cy.findAllByRole('button', {
             name: new RegExp(`${month}\\s+20,\\s+${year}`, 'i')
@@ -60,16 +60,14 @@ describe('PresenterTableFilters', () => {
             .click();
         } else {
           cy.wrap($firstButton).click();
-          cy.wait(200);
           cy.findByRole('dialog').should('be.visible');
-          cy.findAllByRole('button', { name: /20/i })
+          cy.findAllByRole('button', { name: /\w+\s+20,\s+\d{4}/i })
             .first()
             .should('be.visible')
             .click();
         }
       });
 
-    cy.wait(200);
     cy.get('@setFilterValue').should('have.been.called');
     cy.get('@setFilterValue').then((stub) => {
       const calls = (stub as unknown as sinon.SinonStub).getCalls();
@@ -90,13 +88,21 @@ describe('PresenterTableFilters', () => {
   });
 
   it('handles duration range filtering', () => {
-    cy.findAllByRole('slider').first().focus().type('{rightarrow}');
+    // Scope to the duration slider component to avoid matching any slider on the page
+    cy.findByLabelText('Duration')
+      .parent()
+      .within(() => {
+        cy.findAllByRole('slider').first().focus().type('{rightarrow}');
+      });
     cy.get('@setFilterValue').should('have.been.called');
   });
 
   it('handles status filtering', () => {
-    cy.findByRole('combobox', { name: /^status$/i }).should('exist');
-    cy.findByRole('combobox', { name: /^status$/i }).click();
+    // Store in an alias to avoid duplicating the same query
+    cy.findByRole('combobox', { name: /^status$/i })
+      .should('exist')
+      .as('statusCombobox')
+      .click();
     cy.findByRole('option', { name: /^approved$/i }).click();
     cy.get('@setFilterValue').should('have.been.calledWith', 'approved');
   });
