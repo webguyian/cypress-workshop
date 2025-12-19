@@ -28,9 +28,11 @@ describe('StatCards', () => {
   });
 
   it('renders all three stat cards', () => {
-    cy.get('@totalPresenters').should('be.visible');
-    cy.get('@approvedPresenters').should('be.visible');
-    cy.get('@averageDuration').should('be.visible');
+    cy.mount(<StatCards data={mockPresenters} />);
+
+    cy.findByText('Total Presenters').should('be.visible');
+    cy.findByText('Approved Presenters').should('be.visible');
+    cy.findByText('Average Duration').should('be.visible');
   });
 
   it('calculates statistics correctly', () => {

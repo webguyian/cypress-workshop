@@ -24,7 +24,7 @@ describe('DataTable', () => {
   });
 
   it('renders the table with correct data', () => {
-    cy.findByRole('table').should('exist');
+    cy.findByRole('table').should('be.visible');
     cy.findAllByRole('columnheader').should('have.length', columns.length);
     cy.findByRole('table').within(() => {
       cy.findAllByRole('row').should('have.length', mockPresenters.length + 1); // +1 for header row

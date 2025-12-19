@@ -10,15 +10,12 @@ Given('the user is on the dashboard', () => {
 });
 
 Given('a presenter with status {string} exists', (status: string) => {
-  cy.findByRole('table').within(() => {
-    cy.get('[data-slot="badge"]')
-      .filter((_, el) => {
-        return el.textContent?.toLowerCase().trim() === status.toLowerCase();
-      })
-      .first()
-      .closest('tr')
-      .as('currentRow', { type: 'static' });
-  });
+  cy.findByRole('table')
+    .findAllByText(status)
+    .filter(':visible')
+    .first()
+    .closest('tr')
+    .as('currentRow', { type: 'static' });
 
   getApprovedCount()
     .should('be.a', 'number')

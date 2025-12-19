@@ -3,6 +3,28 @@ import { useTestTableInstance } from '../../cypress/support/table-test-utils';
 import { Table } from '@tanstack/react-table';
 import { Presenter } from '@/types';
 
+// Complex regex patterns that are not human-readable
+const DATE_BUTTON_DAY_15 = /\w+\s+15,\s+\d{4}/i;
+const DATE_BUTTON_DAY_20 = /\w+\s+20,\s+\d{4}/i;
+const DATE_ARIA_LABEL_15 = /(\w+)\s+15,\s+(\d{4})/;
+
+// Function to create dynamic date button regex pattern
+const createDateButtonPattern = (month: string, year: string, day: number) =>
+  new RegExp(`${month}\\s+${day},\\s+${year}`, 'i');
+
+// Label text constants
+const DURATION_LABEL = 'Duration';
+
+// Regex patterns for role-based selectors
+const ROLE_PATTERNS = {
+  NAME: /^name$/i,
+  TOPIC: /^topic$/i,
+  STATUS: /^status$/i,
+  APPROVED: /^approved$/i,
+  DATE_RANGE_PICKER: /date range picker/i,
+  RESET_FILTERS: /reset all filters/i
+} as const;
+
 describe('PresenterTableFilters', () => {
   const PresenterTableFiltersTest = () => {
     const table = useTestTableInstance() as Table<Presenter>;
@@ -22,7 +44,7 @@ describe('PresenterTableFilters', () => {
   });
 
   it('handles name input filtering', () => {
-    cy.findByRole('textbox', { name: /^name$/i })
+    cy.findByRole('textbox', { name: ROLE_PATTERNS.NAME })
       .should('be.visible')
       .should('have.value', '')
       .type('J');
@@ -30,7 +52,7 @@ describe('PresenterTableFilters', () => {
   });
 
   it('handles topic input filtering', () => {
-    cy.findByRole('textbox', { name: /^topic$/i })
+    cy.findByRole('textbox', { name: ROLE_PATTERNS.TOPIC })
       .should('be.visible')
       .should('be.enabled')
       .type('R');
@@ -38,22 +60,22 @@ describe('PresenterTableFilters', () => {
   });
 
   it('handles date range filtering', () => {
-    cy.findByRole('button', { name: /date range picker/i }).click();
+    cy.findByRole('button', { name: ROLE_PATTERNS.DATE_RANGE_PICKER }).click();
     cy.findByRole('dialog').should('be.visible');
 
     // Match the full aria-label format like "January 15, 2025" for more specificity
-    cy.findAllByRole('button', { name: /\w+\s+15,\s+\d{4}/i })
+    cy.findAllByRole('button', { name: DATE_BUTTON_DAY_15 })
       .first()
       .should('be.visible')
       .then(($firstButton) => {
         const firstAriaLabel = $firstButton.attr('aria-label') || '';
-        const firstMatch = firstAriaLabel.match(/(\w+)\s+15,\s+(\d{4})/);
+        const firstMatch = firstAriaLabel.match(DATE_ARIA_LABEL_15);
         if (firstMatch) {
           const [, month, year] = firstMatch;
           cy.wrap($firstButton).click();
           cy.findByRole('dialog').should('be.visible');
           cy.findAllByRole('button', {
-            name: new RegExp(`${month}\\s+20,\\s+${year}`, 'i')
+            name: createDateButtonPattern(month, year, 20)
           })
             .first()
             .should('be.visible')
@@ -61,7 +83,7 @@ describe('PresenterTableFilters', () => {
         } else {
           cy.wrap($firstButton).click();
           cy.findByRole('dialog').should('be.visible');
-          cy.findAllByRole('button', { name: /\w+\s+20,\s+\d{4}/i })
+          cy.findAllByRole('button', { name: DATE_BUTTON_DAY_20 })
             .first()
             .should('be.visible')
             .click();
@@ -89,7 +111,7 @@ describe('PresenterTableFilters', () => {
 
   it('handles duration range filtering', () => {
     // Scope to the duration slider component to avoid matching any slider on the page
-    cy.findByLabelText('Duration')
+    cy.findByLabelText(DURATION_LABEL)
       .parent()
       .within(() => {
         cy.findAllByRole('slider').first().focus().type('{rightarrow}');
@@ -98,17 +120,15 @@ describe('PresenterTableFilters', () => {
   });
 
   it('handles status filtering', () => {
-    // Store in an alias to avoid duplicating the same query
-    cy.findByRole('combobox', { name: /^status$/i })
-      .should('exist')
-      .as('statusCombobox')
+    cy.findByRole('combobox', { name: ROLE_PATTERNS.STATUS })
+      .should('be.visible')
       .click();
-    cy.findByRole('option', { name: /^approved$/i }).click();
+    cy.findByRole('option', { name: ROLE_PATTERNS.APPROVED }).click();
     cy.get('@setFilterValue').should('have.been.calledWith', 'approved');
   });
 
   it('resets all filters', () => {
-    cy.findByRole('button', { name: /reset all filters/i }).click();
+    cy.findByRole('button', { name: ROLE_PATTERNS.RESET_FILTERS }).click();
     cy.get('@resetColumnFilters').should('have.been.called');
   });
 });
