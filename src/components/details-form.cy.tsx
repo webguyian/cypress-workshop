@@ -1,19 +1,10 @@
 import { DetailsForm } from '@/components';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 import { formatPresenterData } from '@/lib/utils';
-import type { Presenter } from '@/types';
+import { mockPresenters } from '@/const/mocks/presenters';
 
 describe('DetailsForm', () => {
-  const mockPresenter: Presenter = {
-    id: '1',
-    name: 'John Doe',
-    company: 'Test Co',
-    email: 'john@test.com',
-    topic: 'Cypress Testing',
-    date: '2025-04-17',
-    duration: 60,
-    status: 'pending'
-  };
+  const mockPresenter = mockPresenters[0];
   const LABELS = {
     topic: 'Topic',
     presenter: 'Presenter',
@@ -67,10 +58,10 @@ describe('DetailsForm', () => {
     );
 
     // Check if date picker shows correct date
-    cy.findByLabelText(LABELS.date).should('contain', 'April 17th, 2025');
+    cy.findByLabelText(LABELS.date).should('contain', 'January 1st, 2025');
 
     // Check if status select shows correct value
-    cy.findByLabelText(LABELS.status).should('contain', 'Pending');
+    cy.findByLabelText(LABELS.status).should('contain', 'Review');
   });
 
   it('validates required fields', () => {

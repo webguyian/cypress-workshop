@@ -1,54 +1,63 @@
-# React + TypeScript + Vite
+# Cypress Workshop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a hands-on Cypress workshop using React, TypeScript, and Vite. It demonstrates best practices for both E2E and component testing.
 
-Currently, two official plugins are available:
+## E2E Scenarios Covered
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Approve Presenter**: Approving a presenter updates their status correctly.
+- **Edit Presenter**: Editing presenter details, including validation for required fields.
+- **Filter Presenters**: Combining filters, handling empty results, and resetting filters.
 
-## Expanding the ESLint configuration
+## Component Test Scenarios
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **StatCards**: Renders presenter statistics and validates display.
+- **PresenterTableFilters**: Interacts with table filters and resets.
+- **DataTable**: Displays presenter data and supports table interactions.
+- **DetailsForm**: Handles form validation, editing, and error states.
+- **ActionCell**: Tests row actions like edit, approve, and reject.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Best Practices Demonstrated
+
+- Use of Cypress for both E2E and component testing
+- Test isolation and use of fixtures/mocks
+- Accessibility queries (e.g., `findByRole`)
+- Validation of UI state and error handling
+- Modular test utilities for table and form components
+
+---
+
+## Running Tests
+
+You can run tests using the following npm scripts:
+
+### Run all tests (E2E and component)
+
+```sh
+npm run test:all
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run E2E tests
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```sh
+npm run test:e2e
 ```
+
+### Run component tests
+
+```sh
+npm run test:component
+```
+
+### Open Cypress interactive UI
+
+```sh
+npm run cypress:open
+```
+
+---
+
+For more examples and best practices, explore:
+
+- The `cypress/e2e` directory for E2E test definitions and feature files
+- The `src/components` directory for component code and component tests
+- The `cypress/support` directory for custom Cypress commands and test utilities

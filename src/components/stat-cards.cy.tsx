@@ -1,87 +1,106 @@
 import { StatCards } from './';
-import { Presenter } from '@/types';
+import { mockPresenters } from '@/const/mocks/presenters';
+
+const STAT_LABELS = {
+  TOTAL: /total presenters/i,
+  APPROVED: /approved presenters/i,
+  AVERAGE: /average duration/i,
+  NUMBER: /\d+/
+};
 
 describe('StatCards', () => {
-  const mockPresenters: Presenter[] = [
-    {
-      id: '1',
-      name: 'John Doe',
-      company: 'Test Co',
-      email: 'john@test.com',
-      topic: 'Testing',
-      date: '2025-04-17',
-      duration: 60,
-      status: 'approved'
-    },
-    {
-      id: '2',
-      name: 'Jane Smith',
-      company: 'Dev Co',
-      email: 'jane@test.com',
-      topic: 'Development',
-      date: '2025-04-18',
-      duration: 30,
-      status: 'pending'
-    }
-  ];
+  const data = mockPresenters.slice(0, 2);
+
+  beforeEach(() => {
+    cy.mount(<StatCards data={data} />);
+
+    cy.findByRole('region', { name: STAT_LABELS.TOTAL })
+      .should('be.visible')
+      .as('totalPresenters');
+
+    cy.findByRole('region', { name: STAT_LABELS.APPROVED })
+      .should('be.visible')
+      .as('approvedPresenters');
+
+    cy.findByRole('region', { name: STAT_LABELS.AVERAGE })
+      .should('be.visible')
+      .as('averageDuration');
+  });
 
   it('renders all three stat cards', () => {
-    cy.mount(<StatCards data={mockPresenters} />);
-
-    cy.findByText('Total Presenters').should('exist');
-    cy.findByText('Approved Presenters').should('exist');
-    cy.findByText('Average Duration').should('exist');
+    cy.get('@totalPresenters').should('be.visible');
+    cy.get('@approvedPresenters').should('be.visible');
+    cy.get('@averageDuration').should('be.visible');
   });
 
   it('calculates statistics correctly', () => {
-    cy.mount(<StatCards data={mockPresenters} />);
-
     // Total presenters should be 2
-    cy.findByText('2').should('exist');
+    cy.get('@totalPresenters').within(() =>
+      cy.findByText('2').should('be.visible')
+    );
 
     // Only one presenter is approved
-    cy.findByText('1').should('exist');
+    cy.get('@approvedPresenters').within(() =>
+      cy.findByText('1').should('be.visible')
+    );
 
     // Average duration should be 45 min ((60 + 30) / 2)
-    cy.findByText('45 min').should('exist');
+    cy.get('@averageDuration').within(() =>
+      cy.findByText('45 min').should('be.visible')
+    );
   });
 
   it('updates stats when data changes', () => {
-    cy.mount(<StatCards data={mockPresenters} />);
-
-    // Initial check
-    cy.findByText('2').should('exist'); // Total presenters
-
-    // Add another approved presenter
-    const updatedPresenters: Presenter[] = [
-      ...mockPresenters,
-      {
-        id: '3',
-        name: 'Bob Wilson',
-        company: 'Test Co',
-        email: 'bob@test.com',
-        topic: 'Testing',
-        date: '2025-04-19',
-        duration: 90,
-        status: 'approved'
-      }
-    ];
+    // Total presenters should be 2 initially
+    cy.get('@totalPresenters').within(() =>
+      cy.findByText('2').should('be.visible')
+    );
 
     // Rerender with updated data
-    cy.mount(<StatCards data={updatedPresenters} />);
+    cy.mount(<StatCards data={mockPresenters} />);
 
-    // Check updated stats
-    cy.findByText('3').should('exist'); // Total presenters
-    cy.findByText('2').should('exist'); // Approved presenters
-    cy.findByText('60 min').should('exist'); // Average duration ((60 + 30 + 90) / 3)
+    // Total presenters
+    cy.findByRole('region', { name: STAT_LABELS.TOTAL })
+      .should('be.visible')
+      .findByText(STAT_LABELS.NUMBER)
+      .invoke('text')
+      .should('equal', '3');
+
+    // Approved presenters
+    cy.findByRole('region', { name: STAT_LABELS.APPROVED })
+      .should('be.visible')
+      .findByText(STAT_LABELS.NUMBER)
+      .invoke('text')
+      .should('equal', '2');
+
+    // Average duration ((60 + 30 + 90) / 3)
+    cy.findByRole('region', { name: STAT_LABELS.AVERAGE })
+      .should('be.visible')
+      .findByText(STAT_LABELS.NUMBER)
+      .invoke('text')
+      .should('equal', '60 min');
   });
 
-  xit('handles empty data', () => {
+  it('handles empty data', () => {
     cy.mount(<StatCards data={[]} />);
 
     // Should show 0 for all stats
-    cy.findByText('0').should('exist'); // Total presenters
-    cy.findByText('0').should('exist'); // Approved presenters
-    cy.findByText('0 min').should('exist'); // Average duration
+    cy.findByRole('region', { name: STAT_LABELS.TOTAL })
+      .should('be.visible')
+      .findByText(STAT_LABELS.NUMBER)
+      .invoke('text')
+      .should('equal', '0');
+
+    cy.findByRole('region', { name: STAT_LABELS.APPROVED })
+      .should('be.visible')
+      .findByText(STAT_LABELS.NUMBER)
+      .invoke('text')
+      .should('equal', '0');
+
+    cy.findByRole('region', { name: STAT_LABELS.AVERAGE })
+      .should('be.visible')
+      .findByText(STAT_LABELS.NUMBER)
+      .invoke('text')
+      .should('equal', '0 min');
   });
 });
