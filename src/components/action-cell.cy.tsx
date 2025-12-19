@@ -44,14 +44,14 @@ describe('ActionCell', () => {
 
   it('shows dropdown menu when clicked', () => {
     // Check menu items exist
-    cy.findByText(EDIT_MENU_TEXT).should('be.visible');
-    cy.findByText(APPROVE_MENU_TEXT).should('be.visible');
-    cy.findByText(REJECT_MENU_TEXT).should('be.visible');
+    cy.findByRole('menuitem', { name: EDIT_MENU_TEXT }).should('be.visible');
+    cy.findByRole('menuitem', { name: APPROVE_MENU_TEXT }).should('be.visible');
+    cy.findByRole('menuitem', { name: REJECT_MENU_TEXT }).should('be.visible');
   });
 
   it('opens drawer when Edit is clicked', () => {
     // Open dropdown and click Edit
-    cy.findByText(EDIT_MENU_TEXT).click();
+    cy.findByRole('menuitem', { name: EDIT_MENU_TEXT }).click();
 
     // Check if drawer is opened with form
     cy.findByRole('dialog').should('be.visible');
@@ -64,18 +64,18 @@ describe('ActionCell', () => {
 
   it('handles form submission in drawer', () => {
     // Open dropdown and edit form
-    cy.findByText(EDIT_MENU_TEXT).click();
+    cy.findByRole('menuitem', { name: EDIT_MENU_TEXT }).click();
 
     // Fill form
     cy.findByLabelText('Topic').clear().type('Updated Topic');
-    cy.findByText(SAVE_CHANGES_BUTTON_TEXT).click();
+    cy.findByRole('button', { name: SAVE_CHANGES_BUTTON_TEXT }).click();
 
     // Verify update was called
     cy.get('@updateRow').should('have.been.called');
   });
 
   it('approves a presentation', () => {
-    cy.findByText(APPROVE_MENU_TEXT).click();
+    cy.findByRole('menuitem', { name: APPROVE_MENU_TEXT }).click();
 
     // TODO: Verify updateRow was called with approved status
     cy.get('@updateRow').should('have.been.calledWith', {
@@ -85,7 +85,7 @@ describe('ActionCell', () => {
   });
 
   it('rejects a presentation', () => {
-    cy.findByText(REJECT_MENU_TEXT).click();
+    cy.findByRole('menuitem', { name: REJECT_MENU_TEXT }).click();
 
     // Verify updateRow was called with rejected status
     cy.get('@updateRow').should('have.been.calledWith', {

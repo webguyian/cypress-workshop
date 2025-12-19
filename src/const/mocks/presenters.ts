@@ -1,5 +1,5 @@
 import type { Presenter } from '@/types';
-
+// We have mock presenters in several files, should we consolidate?
 export const mockPresenters: Presenter[] = [
   {
     id: '1',

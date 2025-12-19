@@ -8,7 +8,7 @@ Feature: Filter Presenters
   Scenario: Combining multiple filters displays matching presenters
     When the user filters by name with "Roderic"
     And the user filters by status "approved"
-    Then the table should only display presenters matching all filter criteria
+    Then the table should only display presenters matching "Roderic" and "approved"
     And the table should show at least one row
 
   Scenario: Filters with no matches display empty state

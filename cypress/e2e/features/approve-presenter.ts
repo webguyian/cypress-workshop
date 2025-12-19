@@ -17,7 +17,7 @@ Given('a presenter with status {string} exists', (status: string) => {
     .closest('tr')
     .as('currentRow', { type: 'static' });
 
-  cy.getApprovedCount()
+  getApprovedCount()
     .should('be.a', 'number')
     .as('approvedCount', { type: 'static' });
 
@@ -49,8 +49,18 @@ Then('the presenter status should be {string}', (status: string) => {
   assertApprovedCountChange(status, '@approvedCount');
 });
 
+function getApprovedCount() {
+  return cy
+    .findByRole('region', { name: /approved presenters/i })
+    .should('be.visible')
+    .findByText(/\d+/)
+    .should('be.visible')
+    .invoke('text')
+    .then((text) => parseInt(text, 10));
+}
+
 function assertApprovedCountChange(status: string, approvedCountAlias: string) {
-  cy.getApprovedCount().then((newCount) => {
+  getApprovedCount().then((newCount) => {
     cy.get<number>(approvedCountAlias).then((count) => {
       if (status === STATUS_APPROVED) {
         expect(newCount).to.be.greaterThan(count);
