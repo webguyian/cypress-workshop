@@ -4,16 +4,18 @@ import { Table } from '@tanstack/react-table';
 import { Presenter } from '@/types';
 
 // Complex regex patterns that are not human-readable
-const DATE_BUTTON_DAY_15 = /\w+\s+15,\s+\d{4}/i;
-const DATE_BUTTON_DAY_20 = /\w+\s+20,\s+\d{4}/i;
-const DATE_ARIA_LABEL_15 = /(\w+)\s+15,\s+(\d{4})/;
+const DATE_PATTERNS = {
+  DAY_15: /15/i,
+  DAY_20: /20/i,
+  DAY_15_LABEL: /(\w+)\s+15,\s+(\d{4})/
+};
 
 // Function to create dynamic date button regex pattern
 const createDateButtonPattern = (month: string, year: string, day: number) =>
   new RegExp(`${month}\\s+${day},\\s+${year}`, 'i');
 
 // Label text constants
-const DURATION_LABEL = 'Duration';
+const DURATION_LABEL = 'Duration range';
 
 // Regex patterns for role-based selectors
 const ROLE_PATTERNS = {
@@ -63,13 +65,12 @@ describe('PresenterTableFilters', () => {
     cy.findByRole('button', { name: ROLE_PATTERNS.DATE_RANGE_PICKER }).click();
     cy.findByRole('dialog').should('be.visible');
 
-    // Match the full aria-label format like "January 15, 2025" for more specificity
-    cy.findAllByRole('button', { name: DATE_BUTTON_DAY_15 })
+    cy.findAllByRole('button', { name: DATE_PATTERNS.DAY_15 })
       .first()
       .should('be.visible')
       .then(($firstButton) => {
         const firstAriaLabel = $firstButton.attr('aria-label') || '';
-        const firstMatch = firstAriaLabel.match(DATE_ARIA_LABEL_15);
+        const firstMatch = firstAriaLabel.match(DATE_PATTERNS.DAY_15_LABEL);
         if (firstMatch) {
           const [, month, year] = firstMatch;
           cy.wrap($firstButton).click();
@@ -83,7 +84,7 @@ describe('PresenterTableFilters', () => {
         } else {
           cy.wrap($firstButton).click();
           cy.findByRole('dialog').should('be.visible');
-          cy.findAllByRole('button', { name: DATE_BUTTON_DAY_20 })
+          cy.findAllByRole('button', { name: DATE_PATTERNS.DAY_20 })
             .first()
             .should('be.visible')
             .click();
