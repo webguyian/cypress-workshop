@@ -63,9 +63,9 @@ function assertApprovedCountChange(status: string, approvedCountAlias: string) {
   getApprovedCount().then((newCount) => {
     cy.get<number>(approvedCountAlias).then((count) => {
       if (status === STATUS_APPROVED) {
-        expect(newCount).to.be.greaterThan(count);
+        cy.wrap(newCount).should('be.greaterThan', count);
       } else {
-        expect(newCount).to.equal(count);
+        cy.wrap(newCount).should('equal', count);
       }
     });
   });

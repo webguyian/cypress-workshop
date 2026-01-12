@@ -166,11 +166,11 @@ describe('DetailsForm', () => {
       const formData = new FormData(event.target as HTMLFormElement);
       const data = formatPresenterData(Object.fromEntries(formData.entries()));
 
-      expect(data.topic).to.equal('Updated Topic');
-      expect(data.name).to.equal('Jane Smith');
-      expect(data.email).to.equal('jane@example.com');
-      expect(data.company).to.equal('New Company');
-      expect(data.duration).to.equal(45);
+      cy.wrap(data.topic).should('equal', 'Updated Topic');
+      cy.wrap(data.name).should('equal', 'Jane Smith');
+      cy.wrap(data.email).should('equal', 'jane@example.com');
+      cy.wrap(data.company).should('equal', 'New Company');
+      cy.wrap(data.duration).should('equal', 45);
     });
   });
 });

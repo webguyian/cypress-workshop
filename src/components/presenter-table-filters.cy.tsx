@@ -98,10 +98,10 @@ describe('PresenterTableFilters', () => {
         .reverse()
         .find((call) => call.args[0] && call.args[0].from && call.args[0].to);
       if (dateRangeCall) {
-        expect(dateRangeCall.args[0]).to.have.property('from');
-        expect(dateRangeCall.args[0]).to.have.property('to');
-        expect(dateRangeCall.args[0].from).to.be.instanceOf(Date);
-        expect(dateRangeCall.args[0].to).to.be.instanceOf(Date);
+        cy.wrap(dateRangeCall.args[0]).should('have.property', 'from');
+        cy.wrap(dateRangeCall.args[0]).should('have.property', 'to');
+        cy.wrap(dateRangeCall.args[0].from).should('be.instanceOf', Date);
+        cy.wrap(dateRangeCall.args[0].to).should('be.instanceOf', Date);
       } else {
         throw new Error(
           'setFilterValue was not called with a complete date range'
