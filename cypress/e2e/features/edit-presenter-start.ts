@@ -1,7 +1,5 @@
 import { Given, Then, When } from '@badeball/cypress-cucumber-preprocessor';
 
-// Brute force step definitions for the 'Start' feature
-
 Given('the user is on the dashboard', () => {
   cy.visit('http://localhost:3000');
 });
