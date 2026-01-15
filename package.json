@@ -11,7 +11,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "dev": "vite",
-    "lint:eslint": "eslint src/ -ext .tsx,.ts --fix --max-warnings=0",
+    "lint:eslint": "eslint src/ --ext .tsx,.ts --fix --max-warnings=0",
     "lint:ts": "tsc --noEmit",
     "lint": "npm run lint:eslint && npm run lint:ts",
     "preview": "vite preview",
