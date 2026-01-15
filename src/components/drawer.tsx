@@ -24,9 +24,11 @@ export const Drawer = ({
 }: DrawerProps) => {
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetTrigger asChild>
-        {triggerElement || <Button variant="outline">Edit</Button>}
-      </SheetTrigger>
+      {triggerElement !== null && (
+        <SheetTrigger asChild>
+          {triggerElement || <Button variant="outline">Edit</Button>}
+        </SheetTrigger>
+      )}
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Edit presentation details</SheetTitle>

@@ -1,22 +1,22 @@
-import { useState, useEffect } from "react"
-import { format } from "date-fns"
-import { Calendar as CalendarIcon } from "lucide-react"
-import { DateRange } from "react-day-picker"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+import { useState, useEffect } from 'react';
+import { format } from 'date-fns';
+import { Calendar as CalendarIcon } from 'lucide-react';
+import { DateRange } from 'react-day-picker';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-import { cn } from "@/lib/utils"
+  PopoverTrigger
+} from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
 
 export type DateRangePickerProps = {
-  className?: string
-  id: string
-  initialDateRange?: DateRange | null
-  onDateRangeChange?: (range: DateRange | null) => void
-}
+  className?: string;
+  id: string;
+  initialDateRange?: DateRange | null;
+  onDateRangeChange?: (range: DateRange | null) => void;
+};
 
 export function DateRangePicker({
   className,
@@ -24,31 +24,34 @@ export function DateRangePicker({
   initialDateRange,
   onDateRangeChange
 }: DateRangePickerProps) {
-  const [dateRange, setDateRange] = useState<DateRange | null>(initialDateRange || null)
+  const [dateRange, setDateRange] = useState<DateRange | null>(
+    initialDateRange || null
+  );
 
   useEffect(() => {
     if (initialDateRange !== undefined) {
-      setDateRange(initialDateRange)
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setDateRange(initialDateRange);
     }
-  }, [initialDateRange])
+  }, [initialDateRange]);
 
   const handleDateRangeSelect = (selectedRange: DateRange | undefined) => {
-    setDateRange(selectedRange || null)
+    setDateRange(selectedRange || null);
     if (onDateRangeChange) {
-      onDateRangeChange(selectedRange || null)
+      onDateRangeChange(selectedRange || null);
     }
-  }
+  };
 
   return (
-    <div className={cn("grid gap-2", className)}>
+    <div className={cn('grid gap-2', className)}>
       <Popover>
         <PopoverTrigger asChild>
           <div>
             <Button
               variant="outline"
               className={cn(
-                "w-full justify-start text-left font-normal",
-                !dateRange && "text-muted-foreground"
+                'w-full justify-start text-left font-normal',
+                !dateRange && 'text-muted-foreground'
               )}
               id={id}
               aria-label="Date range picker"
@@ -57,11 +60,11 @@ export function DateRangePicker({
               {dateRange?.from ? (
                 dateRange.to ? (
                   <>
-                    {format(dateRange.from, "LLL dd, y")} -{" "}
-                    {format(dateRange.to, "LLL dd, y")}
+                    {format(dateRange.from, 'LLL dd, y')} -{' '}
+                    {format(dateRange.to, 'LLL dd, y')}
                   </>
                 ) : (
-                  format(dateRange.from, "LLL dd, y")
+                  format(dateRange.from, 'LLL dd, y')
                 )
               ) : (
                 <span>Pick a date range</span>
@@ -81,5 +84,5 @@ export function DateRangePicker({
         </PopoverContent>
       </Popover>
     </div>
-  )
-} 
+  );
+}
