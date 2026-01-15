@@ -56,6 +56,20 @@ npm run cypress:open
 
 ---
 
+## Code Coverage
+
+You can generate code coverage reports for both E2E and component tests.
+
+### Run all tests and generate coverage report
+
+```sh
+npm run coverage:full
+```
+
+The report will be generated in the `coverage/` directory after the tests complete.
+
+---
+
 For more examples and best practices, explore:
 
 - The `cypress/e2e` directory for E2E test definitions and feature files
