@@ -2,7 +2,6 @@ import { addCucumberPreprocessorPlugin } from '@badeball/cypress-cucumber-prepro
 import { createEsbuildPlugin } from '@badeball/cypress-cucumber-preprocessor/esbuild';
 import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
 import coverageTask from '@cypress/code-coverage/task';
-import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'cypress';
 
 export default defineConfig({
@@ -43,13 +42,17 @@ export default defineConfig({
     devServer: {
       framework: 'react',
       bundler: 'vite',
-      viteConfig: {
-        plugins: [tailwindcss()],
-        resolve: {
-          alias: {
-            '@': '/src'
+      viteConfig: async () => {
+        const tailwindcss = (await import('@tailwindcss/vite')).default;
+        const react = (await import('@vitejs/plugin-react')).default;
+        return {
+          plugins: [react(), tailwindcss()],
+          resolve: {
+            alias: {
+              '@': '/src'
+            }
           }
-        }
+        };
       }
     },
     setupNodeEvents(on, config) {
