@@ -16,15 +16,15 @@ import '@testing-library/cypress/add-commands';
 // Example of a custom command:
 // Cypress.Commands.add('login', (email, password) => { ... })
 
-Cypress.Commands.add('findByButton', (name) => {
+Cypress.Commands.add('findByButton', (name: string | RegExp) => {
   return cy.findByRole('button', { name: new RegExp(name, 'i') });
 });
 
-Cypress.Commands.add('findByRegex', (text) => {
-  return cy.contains(new RegExp(text, 'i'));
+Cypress.Commands.add('findByRegex', (text: string | RegExp) => {
+  return cy.findByText(new RegExp(text, 'i'));
 });
 
 Cypress.Commands.add('validateField', (label: string, errorMessage: string) => {
   cy.findByLabelText(label).clear().blur();
-  cy.findByText(errorMessage).should('be.visible');
+  return cy.findByText(errorMessage).should('be.visible');
 });

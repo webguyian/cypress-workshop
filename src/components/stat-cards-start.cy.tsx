@@ -1,4 +1,5 @@
 import { StatCards } from './';
+import { Presenter } from '@/types';
 // ANTI-PATTERN: Not using shared mock data from constants
 // Using inline/hardcoded data makes tests harder to maintain
 
@@ -12,7 +13,7 @@ const STAT_LABELS = {
 describe('StatCards', () => {
   // ANTI-PATTERN: Using inline data instead of shared mockPresenters
   // This data is duplicated and not reusable across tests
-  const data = [
+  const data: Presenter[] = [
     {
       id: '1',
       name: 'John Doe',
@@ -56,7 +57,7 @@ describe('StatCards', () => {
 
   it('renders all three stat cards', () => {
     // ANTI-PATTERN: Using inline data again instead of shared mock
-    const allData = [
+    const allData: Presenter[] = [
       {
         id: '1',
         name: 'John Doe',
@@ -117,7 +118,7 @@ describe('StatCards', () => {
     cy.findByText('2').first().should('be.visible');
 
     // ANTI-PATTERN: Using inline data again
-    const updatedData = [
+    const updatedData: Presenter[] = [
       {
         id: '1',
         name: 'John Doe',

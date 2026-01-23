@@ -1,7 +1,5 @@
-
 import { DetailsForm } from '@/components';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
-import { formatPresenterData } from '@/lib/utils';
 import { mockPresenters } from '@/const/mocks/presenters';
 
 describe('DetailsForm', () => {
@@ -119,7 +117,6 @@ describe('DetailsForm', () => {
 
     cy.findByRole('option', { name: /approved/i }).click();
     cy.findByRole('button', { name: /save changes/i }).click();
-
 
     cy.get('@onSubmit').should('have.been.called');
   });
