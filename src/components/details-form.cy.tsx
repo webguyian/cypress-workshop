@@ -1,6 +1,5 @@
 import { DetailsForm } from '@/components';
 import { Sheet, SheetContent } from '@/components/ui/sheet';
-import { formatPresenterData } from '@/lib/utils';
 import { mockPresenters } from '@/const/mocks/presenters';
 
 describe('DetailsForm', () => {
@@ -36,8 +35,8 @@ describe('DetailsForm', () => {
         </SheetContent>
       </Sheet>
     );
-    // Force the sheet to be visible in the test
-    cy.get('[data-slot="sheet-content"]').should('be.visible');
+    // ANTI-PATTERN: Using fixed wait when test is flaky
+    cy.wait(200);
   });
 
   it('renders with initial data', () => {
@@ -57,20 +56,23 @@ describe('DetailsForm', () => {
       mockPresenter.duration.toString()
     );
 
-    // Check if date picker shows correct date
-    cy.findByLabelText(LABELS.date).should('contain', 'January 1st, 2026');
-
-    // Check if status select shows correct value
-    cy.findByLabelText(LABELS.status).should('contain', 'Review');
+    cy.findByLabelText(LABELS.date).should('exist');
+    cy.findByLabelText(LABELS.status).should('exist');
   });
 
   it('validates required fields', () => {
-    // Clear required fields and trigger validation
-    cy.validateField(LABELS.topic, ERRORS.required.topic);
-    cy.validateField(LABELS.presenter, ERRORS.required.presenter);
-    cy.validateField(LABELS.email, ERRORS.required.email);
-    cy.validateField(LABELS.duration, ERRORS.required.duration);
+    // ANTI-PATTERN: Clearing fields and blurring, but doesn't understand why blur is needed
+    cy.findByLabelText(LABELS.topic).clear().blur();
+    cy.findByLabelText(LABELS.presenter).clear().blur();
+    cy.findByLabelText(LABELS.email).clear().blur();
+    cy.findByLabelText(LABELS.duration).clear().blur();
 
+    cy.findByText(ERRORS.required.topic).should('exist');
+    cy.findByText(ERRORS.required.presenter).should('exist');
+    cy.findByText(ERRORS.required.email).should('exist');
+    cy.findByText(ERRORS.required.duration).should('exist');
+
+    // Save button should be disabled
     cy.findByRole('button', { name: /save changes/i }).should('be.disabled');
   });
 
@@ -80,55 +82,30 @@ describe('DetailsForm', () => {
 
     // Check error message
     cy.findByText(ERRORS.format.email).should('be.visible');
-
-    // Enter valid email
-    cy.findByLabelText(LABELS.email).clear().type('valid@email.com').blur();
-
-    // Error message should be gone
-    cy.findByText(ERRORS.format.email).should('not.exist');
   });
 
   it('validates duration is greater than 10', () => {
-    // Enter invalid duration
-    cy.findByLabelText(LABELS.duration).clear().type('0').blur();
-
-    // Check error message
-    cy.findByText(ERRORS.format.duration).should('be.visible');
-
     // Enter valid duration
     cy.findByLabelText(LABELS.duration).clear().type('30').blur();
 
-    // Error message should be gone
+    // Error message should not be visible
     cy.findByText(ERRORS.format.duration).should('not.exist');
   });
 
   it('handles date picker selection', () => {
-    // Open the date picker
     cy.findByLabelText(LABELS.date).click();
-
-    // Wait for calendar to be visible
-    cy.findByRole('grid').should('be.visible');
-
-    // TODO: Select a date (20th of the month)
+    cy.wait(300);
     cy.findByRole('gridcell', { name: /20/ }).click();
-    // cy.get('.rdp-day').contains('20').click();
 
-    // Calendar should be closed
-    cy.findByRole('grid').should('not.exist');
+    // Doesn't verify popover closed - just assumes it did
   });
 
   it('handles status selection', () => {
-    // Open status dropdown
     cy.findByLabelText(LABELS.status).click();
-
     cy.findByRole('option', { name: /approved/i }).click();
-
-    // New status should be selected
-    cy.findByLabelText(LABELS.status).should('contain', 'Approved');
   });
 
   it('submits form with updated data', () => {
-    // Update form fields
     cy.findByLabelText(LABELS.topic).clear().type('Updated Topic');
     cy.findByLabelText(LABELS.presenter).clear().type('Jane Smith');
     cy.findByLabelText(LABELS.email).clear().type('jane@example.com');
@@ -137,25 +114,10 @@ describe('DetailsForm', () => {
 
     // Change status
     cy.findByLabelText(LABELS.status).click();
+
     cy.findByRole('option', { name: /approved/i }).click();
+    cy.findByRole('button', { name: /save changes/i }).click();
 
-    // custom command
-    // cy.findByRole('button', { name: /save changes/i }).click();
-    cy.findByButton(/save changes/i).click();
-
-    // Check if onSubmit was called
     cy.get('@onSubmit').should('have.been.called');
-    cy.get('@onSubmit').then((stub) => {
-      const sinonStub = stub as unknown as sinon.SinonStub;
-      const event = sinonStub.getCall(0).args[0];
-      const formData = new FormData(event.target as HTMLFormElement);
-      const data = formatPresenterData(Object.fromEntries(formData.entries()));
-
-      cy.wrap(data.topic).should('equal', 'Updated Topic');
-      cy.wrap(data.name).should('equal', 'Jane Smith');
-      cy.wrap(data.email).should('equal', 'jane@example.com');
-      cy.wrap(data.company).should('equal', 'New Company');
-      cy.wrap(data.duration).should('equal', 45);
-    });
   });
 });

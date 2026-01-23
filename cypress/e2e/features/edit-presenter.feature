@@ -1,26 +1,21 @@
 Feature: Edit Presenter
 
-  Background:
+  Scenario: Update presenter details
     Given the user is on the dashboard
-    And a presenter exists in the table
+    And the table has loaded data
+    When the user clicks the actions button on the first row
+    And the user clicks the edit menu item
+    And the user types "New Topic" into the topic input
+    And the user types "New Presenter" into the presenter input
+    And the user clicks the save button
+    Then the first row should have "New Topic" in the second column
+    And the first row should have "New Presenter" in the first column
 
-  Scenario: Editing a presenter and updating multiple fields
-    When the user edits the presenter
-    And the user updates the topic to "New Topic"
-    And the user updates the duration to "90"
-    And the user saves the changes
-    Then the presenter details should be updated
-    And a success message should be displayed
-
-  Scenario: Editing a presenter and removing a required field shows validation error
-    When the user edits the presenter
-    And the user removes the duration field value
-    Then a validation error for duration should be displayed
-    And the save changes button should be disabled
-
-  Scenario: Editing a presenter and closing without saving preserves original data
-    When the user edits the presenter
-    And the user updates the topic to "Changed Topic"
-    And the user closes the modal without saving
-    Then the presenter details should remain unchanged
-
+  Scenario: Validation error for required fields
+    Given the user is on the dashboard
+    And the table has loaded data
+    When the user clicks the actions button on the first row
+    And the user clicks the edit menu item
+    And the user clears the duration input
+    Then the error "Duration is required" should be visible
+    And the save button should be disabled

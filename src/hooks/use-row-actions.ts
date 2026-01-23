@@ -36,8 +36,6 @@ const useRowActions = ({ row, table }: ActionCellProps) => {
   const handleApprove = () => {
     setDropdownOpen(false);
 
-    console.log('Approving presenter:', presenter);
-
     if (presenter.status === 'review') {
       // Only approve presenters in "review" status
       updatePresenter?.({ id: presenter.id, status: 'approved' });

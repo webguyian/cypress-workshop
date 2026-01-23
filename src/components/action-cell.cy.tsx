@@ -3,11 +3,6 @@ import type { Presenter } from '@/types';
 import type { Row, Table } from '@tanstack/react-table';
 import { mockPresenters } from '@/const/mocks/presenters';
 
-const EDIT_MENU_TEXT = 'Edit';
-const APPROVE_MENU_TEXT = 'Approve';
-const REJECT_MENU_TEXT = 'Reject';
-const SAVE_CHANGES_BUTTON_TEXT = 'Save changes';
-
 describe('ActionCell', () => {
   const mockPresenter = mockPresenters[0];
 
@@ -17,7 +12,9 @@ describe('ActionCell', () => {
       return false;
     });
 
-    const mockUpdateRow = cy.spy().as('updateRow');
+    // ANTI-PATTERN: No spy - just a no-op function
+    // Testing holes: Can't verify updateRow was called, can't verify parameters
+    const mockUpdateRow = () => {};
     const mockRow = {
       original: mockPresenter
     } as Row<Presenter>;
@@ -37,71 +34,98 @@ describe('ActionCell', () => {
       .click();
   });
 
-  it('renders the action menu button', () => {
-    // cy.get('button[data-slot="dropdown-menu-trigger"]').should('be.visible');
+  // ANTI-PATTERN: Combining multiple behaviors in one test
+  it('renders button, shows menu, opens drawer, and submits form', () => {
+    // Testing multiple behaviors in one test
     cy.get('@actionsButton').should('be.visible');
-  });
 
-  it('shows dropdown menu when clicked', () => {
-    // Check menu items exist
-    cy.findByRole('menuitem', { name: EDIT_MENU_TEXT }).should('be.visible');
-    cy.findByRole('menuitem', { name: APPROVE_MENU_TEXT }).should('be.visible');
-    cy.findByRole('menuitem', { name: REJECT_MENU_TEXT }).should('be.visible');
+    // ANTI-PATTERN: Using text-based selector instead of role-based
+    cy.contains('Edit').should('be.visible');
+    cy.contains('Approve').should('be.visible');
+    cy.contains('Reject').should('be.visible');
+
+    // ANTI-PATTERN: Text-based selector, fragile
+    cy.contains('Edit').click();
+
+    // ANTI-PATTERN: Direct attribute selector instead of role-based
+    cy.get('[role="dialog"]').should('be.visible');
+
+    // ANTI-PATTERN: Generic selector by name attribute, not semantic
+    cy.get('input[name="topic"]').should('have.value', mockPresenter.topic);
+
+    // ANTI-PATTERN: Text matching instead of role
+    cy.get('button').contains('Save changes').click();
+
+    // ANTI-PATTERN: No assertion - can't verify updateRow was called
+    // Missing: verification that updateRow was called with correct parameters
   });
 
   it('opens drawer when Edit is clicked', () => {
-    // Open dropdown and click Edit
-    cy.findByRole('menuitem', { name: EDIT_MENU_TEXT }).click();
+    // ANTI-PATTERN: Arrange - Doing setup inline instead of beforeEach
+    // (Component already mounted, but showing the pattern)
 
-    // Check if drawer is opened with form
-    cy.findByRole('dialog').should('be.visible');
-    cy.findByRole('heading', { name: /edit presentation details/i }).should(
-      'be.visible'
-    );
-    cy.findByRole('form').should('be.visible');
-    cy.findByLabelText('Topic').should('have.value', mockPresenter.topic);
+    // ANTI-PATTERN: Attribute selector instead of role-based
+    cy.get('button[aria-label="Actions"]').click();
+
+    // ANTI-PATTERN: Assert - Checking menu is visible (unnecessary for this test)
+    cy.contains('Edit').should('be.visible');
+
+    // ANTI-PATTERN: Act - Clicking Edit (mixing act and assert)
+    cy.contains('Edit').click();
+
+    // ANTI-PATTERN: Assert - Checking dialog (but also checking form in the middle)
+    cy.get('[role="dialog"]').should('be.visible');
+
+    // ANTI-PATTERN: Asserting mid-flow instead of at the end
+    cy.get('input[name="topic"]').should('have.value', mockPresenter.topic);
+
+    // ANTI-PATTERN: More assertions scattered throughout instead of at the end
+    cy.get('form').should('be.visible');
   });
 
   it('handles form submission in drawer', () => {
-    // Open dropdown and edit form
-    cy.findByRole('menuitem', { name: EDIT_MENU_TEXT }).click();
+    // ANTI-PATTERN: Text-based selector
+    cy.contains('Edit').click();
 
-    // Fill form
-    cy.findByLabelText('Topic').clear().type('Updated Topic');
-    cy.findByRole('button', { name: SAVE_CHANGES_BUTTON_TEXT }).click();
+    // ANTI-PATTERN: Generic selector by name attribute, not semantic
+    cy.get('input[name="topic"]').clear().type('Updated Topic');
 
-    // Verify update was called
-    cy.get('@updateRow').should('have.been.called');
+    // ANTI-PATTERN: Text matching instead of role
+    cy.get('button').contains('Save changes').click();
+
+    // ANTI-PATTERN: No assertion - can't verify update was called
+    // Missing: verification that updateRow was called
   });
 
   it('approves a presentation', () => {
-    cy.findByRole('menuitem', { name: APPROVE_MENU_TEXT }).click();
+    // ANTI-PATTERN: Text-based selector instead of role-based
+    cy.contains('Approve').click();
 
-    // TODO: Verify updateRow was called with approved status
-    cy.get('@updateRow').should('have.been.calledWith', {
-      id: mockPresenter.id,
-      status: 'approved'
-    });
+    // ANTI-PATTERN: No assertion - can't verify updateRow was called
+    // Testing holes:
+    // - Can't verify updateRow was actually called
+    // - Can't verify it was called with correct id
+    // - Can't verify it was called with correct status
+    // - Only testing UI changed, not component intent
+    // - If updateRow silently fails, test still passes
+    // - If wrong parameters passed, test still passes
   });
 
   it('rejects a presentation', () => {
-    cy.findByRole('menuitem', { name: REJECT_MENU_TEXT }).click();
+    // ANTI-PATTERN: Text-based selector instead of role-based
+    cy.contains('Reject').click();
 
-    // Verify updateRow was called with rejected status
-    cy.get('@updateRow').should('have.been.calledWith', {
-      id: mockPresenter.id,
-      status: 'rejected'
-    });
+    // ANTI-PATTERN: No assertion - can't verify updateRow was called
+    // Missing: verification that updateRow was called with rejected status
   });
 
   it('closes dropdown when clicking outside', () => {
-    cy.findByRole('menu').should('be.visible');
+    // ANTI-PATTERN: Direct attribute selector
+    cy.get('[role="menu"]').should('be.visible');
 
-    // TODO: Click outside
     cy.get('html').click(1000, 500);
-    // cy.get('body').click('bottomRight');
 
-    // Verify dropdown is closed
-    cy.findByRole('menu').should('not.exist');
+    // ANTI-PATTERN: Direct attribute selector
+    cy.get('[role="menu"]').should('not.exist');
   });
 });

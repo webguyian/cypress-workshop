@@ -36,9 +36,12 @@ export const DetailsForm = ({ data, onSubmit }: DetailsFormData) => {
               defaultValue={data.topic}
               className="w-full"
               onBlur={handleBlur}
+              aria-invalid={errors.topic ? 'true' : 'false'}
             />
             {errors.topic && (
-              <p className="text-sm text-red-500 mt-1">{errors.topic}</p>
+              <p role="alert" className="text-sm text-red-500 mt-1">
+                {errors.topic}
+              </p>
             )}
           </div>
         </div>
@@ -51,9 +54,12 @@ export const DetailsForm = ({ data, onSubmit }: DetailsFormData) => {
               defaultValue={data.name}
               className="w-full"
               onBlur={handleBlur}
+              aria-invalid={errors.name ? 'true' : 'false'}
             />
             {errors.name && (
-              <p className="text-sm text-red-500 mt-1">{errors.name}</p>
+              <p role="alert" className="text-sm text-red-500 mt-1">
+                {errors.name}
+              </p>
             )}
           </div>
         </div>
@@ -67,9 +73,12 @@ export const DetailsForm = ({ data, onSubmit }: DetailsFormData) => {
               defaultValue={data.email}
               className="w-full"
               onBlur={handleBlur}
+              aria-invalid={errors.email ? 'true' : 'false'}
             />
             {errors.email && (
-              <p className="text-sm text-red-500 mt-1">{errors.email}</p>
+              <p role="alert" className="text-sm text-red-500 mt-1">
+                {errors.email}
+              </p>
             )}
           </div>
         </div>
@@ -92,9 +101,12 @@ export const DetailsForm = ({ data, onSubmit }: DetailsFormData) => {
               defaultValue={data.duration}
               className="w-full"
               onBlur={handleBlur}
+              aria-invalid={errors.duration ? 'true' : 'false'}
             />
             {errors.duration && (
-              <p className="text-sm text-red-500 mt-1">{errors.duration}</p>
+              <p role="alert" className="text-sm text-red-500 mt-1">
+                {errors.duration}
+              </p>
             )}
           </div>
         </div>

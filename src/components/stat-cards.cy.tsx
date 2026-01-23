@@ -1,5 +1,7 @@
 import { StatCards } from './';
-import { mockPresenters } from '@/const/mocks/presenters';
+import { Presenter } from '@/types';
+// ANTI-PATTERN: Not using shared mock data from constants
+// Using inline/hardcoded data makes tests harder to maintain
 
 const STAT_LABELS = {
   TOTAL: /total presenters/i,
@@ -9,100 +11,166 @@ const STAT_LABELS = {
 };
 
 describe('StatCards', () => {
-  const data = mockPresenters.slice(0, 2);
+  // ANTI-PATTERN: Using inline data instead of shared mockPresenters
+  // This data is duplicated and not reusable across tests
+  const data: Presenter[] = [
+    {
+      id: '1',
+      name: 'John Doe',
+      company: 'Acme Inc',
+      email: 'john@acme.com',
+      topic: 'React Testing',
+      date: '2026-01-01',
+      duration: 60,
+      status: 'review'
+    },
+    {
+      id: '2',
+      name: 'Jane Smith',
+      company: 'Tech Corp',
+      email: 'jane@tech.com',
+      topic: 'Cypress Testing',
+      date: '2026-02-01',
+      duration: 30,
+      status: 'approved'
+    }
+  ];
 
   beforeEach(() => {
     cy.mount(<StatCards data={data} />);
 
+    // ANTI-PATTERN: Using 'exist' when visibility matters
+    // Element could be hidden (display:none) and test still passes
+    // Problem: Doesn't verify user can actually see the element
     cy.findByRole('region', { name: STAT_LABELS.TOTAL })
-      .should('be.visible')
+      .should('exist')
       .as('totalPresenters');
 
     cy.findByRole('region', { name: STAT_LABELS.APPROVED })
-      .should('be.visible')
+      .should('exist')
       .as('approvedPresenters');
 
     cy.findByRole('region', { name: STAT_LABELS.AVERAGE })
-      .should('be.visible')
+      .should('exist')
       .as('averageDuration');
   });
 
   it('renders all three stat cards', () => {
-    cy.mount(<StatCards data={mockPresenters} />);
+    // ANTI-PATTERN: Using inline data again instead of shared mock
+    const allData: Presenter[] = [
+      {
+        id: '1',
+        name: 'John Doe',
+        company: 'Acme Inc',
+        email: 'john@acme.com',
+        topic: 'React Testing',
+        date: '2026-01-01',
+        duration: 60,
+        status: 'review'
+      },
+      {
+        id: '2',
+        name: 'Jane Smith',
+        company: 'Tech Corp',
+        email: 'jane@tech.com',
+        topic: 'Cypress Testing',
+        date: '2026-02-01',
+        duration: 30,
+        status: 'approved'
+      },
+      {
+        id: '3',
+        name: 'Bob Johnson',
+        company: 'Dev Co',
+        email: 'bob@dev.com',
+        topic: 'TypeScript',
+        date: '2026-03-01',
+        duration: 90,
+        status: 'approved'
+      }
+    ];
+    cy.mount(<StatCards data={allData} />);
 
-    cy.findByText('Total Presenters').should('be.visible');
-    cy.findByText('Approved Presenters').should('be.visible');
-    cy.findByText('Average Duration').should('be.visible');
+    // ANTI-PATTERN: Using 'exist' instead of 'be.visible'
+    // Problem: Doesn't verify user can actually see the element
+    cy.findByText('Total Presenters').should('exist');
+    cy.findByText('Approved Presenters').should('exist');
+    cy.findByText('Average Duration').should('exist');
   });
 
   it('calculates statistics correctly', () => {
-    // Total presenters should be 2
-    cy.get('@totalPresenters').within(() =>
-      cy.findByText('2').should('be.visible')
-    );
+    // ANTI-PATTERN: Not using .within() for scoped assertions
+    // Searching globally - using .first() to make it pass, but fragile
+    // If card order changes or multiple cards have same value, test breaks
+    // Problem: Not scoped, so can't verify which specific card has the value
+    cy.findByText('2').first().should('be.visible'); // Which card? Ambiguous!
 
-    // Only one presenter is approved
-    cy.get('@approvedPresenters').within(() =>
-      cy.findByText('1').should('be.visible')
-    );
+    // ANTI-PATTERN: Not scoping to the specific card
+    // Fragile - assumes first match is correct
+    cy.findByText('1').first().should('be.visible'); // Which card? Ambiguous!
 
-    // Average duration should be 45 min ((60 + 30) / 2)
-    cy.get('@averageDuration').within(() =>
-      cy.findByText('45 min').should('be.visible')
-    );
+    // ANTI-PATTERN: Not scoping to the specific card
+    cy.findByText('45 min').first().should('be.visible');
   });
 
   it('updates stats when data changes', () => {
-    // Total presenters should be 2 initially
-    cy.get('@totalPresenters').within(() =>
-      cy.findByText('2').should('be.visible')
-    );
+    // ANTI-PATTERN: Not using .within() for scoped assertions
+    cy.findByText('2').first().should('be.visible');
 
-    // Rerender with updated data
-    cy.mount(<StatCards data={mockPresenters} />);
+    // ANTI-PATTERN: Using inline data again
+    const updatedData: Presenter[] = [
+      {
+        id: '1',
+        name: 'John Doe',
+        company: 'Acme Inc',
+        email: 'john@acme.com',
+        topic: 'React Testing',
+        date: '2026-01-01',
+        duration: 60,
+        status: 'review'
+      },
+      {
+        id: '2',
+        name: 'Jane Smith',
+        company: 'Tech Corp',
+        email: 'jane@tech.com',
+        topic: 'Cypress Testing',
+        date: '2026-02-01',
+        duration: 30,
+        status: 'approved'
+      },
+      {
+        id: '3',
+        name: 'Bob Johnson',
+        company: 'Dev Co',
+        email: 'bob@dev.com',
+        topic: 'TypeScript',
+        date: '2026-03-01',
+        duration: 90,
+        status: 'approved'
+      }
+    ];
+    cy.mount(<StatCards data={updatedData} />);
 
-    // Total presenters
-    cy.findByRole('region', { name: STAT_LABELS.TOTAL })
-      .should('be.visible')
-      .findByText(STAT_LABELS.NUMBER)
-      .invoke('text')
-      .should('equal', '3');
-
-    // Approved presenters
-    cy.findByRole('region', { name: STAT_LABELS.APPROVED })
-      .should('be.visible')
-      .findByText(STAT_LABELS.NUMBER)
-      .invoke('text')
-      .should('equal', '2');
-
-    // Average duration ((60 + 30 + 90) / 3)
-    cy.findByRole('region', { name: STAT_LABELS.AVERAGE })
-      .should('be.visible')
-      .findByText(STAT_LABELS.NUMBER)
-      .invoke('text')
-      .should('equal', '60 min');
+    // ANTI-PATTERN: Not scoping assertions to specific regions
+    // Using .first() makes it pass but is fragile and ambiguous
+    // Problem: Can't verify which specific card has which value
+    // Just checking that numbers exist somewhere, not in the right cards
+    cy.findByText('3').first().should('be.visible'); // Which card? Could match any!
+    cy.findByText('2').first().should('be.visible'); // Which card? Ambiguous!
+    cy.findByText('60 min').first().should('be.visible'); // Which card? Could match any!
   });
 
   it('handles empty data', () => {
     cy.mount(<StatCards data={[]} />);
 
-    // Should show 0 for all stats
-    cy.findByRole('region', { name: STAT_LABELS.TOTAL })
-      .should('be.visible')
-      .findByText(STAT_LABELS.NUMBER)
-      .invoke('text')
-      .should('equal', '0');
-
-    cy.findByRole('region', { name: STAT_LABELS.APPROVED })
-      .should('be.visible')
-      .findByText(STAT_LABELS.NUMBER)
-      .invoke('text')
-      .should('equal', '0');
-
-    cy.findByRole('region', { name: STAT_LABELS.AVERAGE })
-      .should('be.visible')
-      .findByText(STAT_LABELS.NUMBER)
-      .invoke('text')
-      .should('equal', '0 min');
+    // ANTI-PATTERN: Testing incorrectly without proper scoping
+    // Not scoping - using .first() to make it pass, but fragile
+    cy.findAllByText('0').first().should('be.visible');
+    // Problems:
+    // - Only testing one card, not all three
+    // - Can't verify which specific card shows 0
+    // - If multiple cards have "0", test is ambiguous
+    // - Not verifying calculations don't crash on empty array
   });
 });
