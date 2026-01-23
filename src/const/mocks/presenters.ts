@@ -7,7 +7,7 @@ export const mockPresenters: Presenter[] = [
     company: 'Acme Inc',
     email: 'john@acme.com',
     topic: 'React Testing',
-    date: '2025-01-01',
+    date: '2026-01-01',
     duration: 60,
     status: 'review'
   },
@@ -17,7 +17,7 @@ export const mockPresenters: Presenter[] = [
     company: 'Tech Corp',
     email: 'jane@tech.com',
     topic: 'Cypress Testing',
-    date: '2025-02-01',
+    date: '2026-02-01',
     duration: 30,
     status: 'approved'
   },
@@ -27,7 +27,7 @@ export const mockPresenters: Presenter[] = [
     company: 'Dev Co',
     email: 'bob@dev.com',
     topic: 'TypeScript',
-    date: '2025-03-01',
+    date: '2026-03-01',
     duration: 90,
     status: 'approved'
   }

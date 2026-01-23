@@ -58,7 +58,7 @@ describe('DetailsForm', () => {
     );
 
     // Check if date picker shows correct date
-    cy.findByLabelText(LABELS.date).should('contain', 'January 1st, 2025');
+    cy.findByLabelText(LABELS.date).should('contain', 'January 1st, 2026');
 
     // Check if status select shows correct value
     cy.findByLabelText(LABELS.status).should('contain', 'Review');
