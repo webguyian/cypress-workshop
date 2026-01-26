@@ -38,7 +38,6 @@ describe('ActionCell', () => {
   });
 
   it('renders the action menu button', () => {
-    // cy.get('button[data-slot="dropdown-menu-trigger"]').should('be.visible');
     cy.get('@actionsButton').should('be.visible');
   });
 
@@ -77,7 +76,7 @@ describe('ActionCell', () => {
   it('approves a presentation', () => {
     cy.findByRole('menuitem', { name: APPROVE_MENU_TEXT }).click();
 
-    // TODO: Verify updateRow was called with approved status
+    // Verify updateRow was called with approved status
     cy.get('@updateRow').should('have.been.calledWith', {
       id: mockPresenter.id,
       status: 'approved'
@@ -97,9 +96,8 @@ describe('ActionCell', () => {
   it('closes dropdown when clicking outside', () => {
     cy.findByRole('menu').should('be.visible');
 
-    // TODO: Click outside
-    cy.get('html').click(1000, 500);
-    // cy.get('body').click('bottomRight');
+    // Click outside
+    cy.get('body').click('bottomRight');
 
     // Verify dropdown is closed
     cy.findByRole('menu').should('not.exist');

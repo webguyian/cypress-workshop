@@ -21,7 +21,7 @@ const FILTER_LABELS = {
 };
 
 Given('the user is on the dashboard', () => {
-  cy.visit('http://localhost:3000');
+  cy.visit('/');
 });
 
 Given('the filters panel is visible', () => {

@@ -1,32 +1,34 @@
 import { Given, Then, When } from '@badeball/cypress-cucumber-preprocessor';
 
-const STATUS_APPROVED = 'approved';
 const MESSAGE_APPROVED = 'Presentation approved';
 const MESSAGE = (status: string) =>
   `Presenter is currently in ${status} status`;
+const STATUS_APPROVED = 'approved';
 
 Given('the user is on the dashboard', () => {
-  cy.visit('http://localhost:3000');
+  cy.visit('/');
 });
 
-Given('a presenter with status {string} exists', (status: string) => {
+Given('a presenter with {string} status exists', (status: string) => {
   cy.findByRole('table')
     .findAllByText(status)
     .filter(':visible')
     .first()
     .closest('tr')
+    .should('be.visible')
     .as('currentRow', { type: 'static' });
 
   getApprovedCount()
     .should('be.a', 'number')
     .as('approvedCount', { type: 'static' });
-
-  cy.get('@currentRow').should('be.visible');
 });
 
 When('the user approves the presenter', () => {
   // Open the action menu for the selected presenter
-  cy.get('@currentRow').findByRole('button').should('be.visible').click();
+  cy.get('@currentRow')
+    .findByRole('button', { name: /actions/i })
+    .should('be.visible')
+    .click();
 
   // Click the approve option in the action menu
   cy.findByRole('menuitem', { name: /approve/i })
@@ -45,8 +47,8 @@ Then('the presenter status should be {string}', (status: string) => {
     cy.findByText(MESSAGE(status)).should('be.visible');
   }
 
-  // Assert that the approved count is updated correctly
-  assertApprovedCountChange(status, '@approvedCount');
+  // Verify the approved count is updated correctly
+  assertApprovedCountChange(status);
 });
 
 function getApprovedCount() {
@@ -54,14 +56,13 @@ function getApprovedCount() {
     .findByRole('region', { name: /approved presenters/i })
     .should('be.visible')
     .findByText(/\d+/)
-    .should('be.visible')
     .invoke('text')
     .then((text) => parseInt(text, 10));
 }
 
-function assertApprovedCountChange(status: string, approvedCountAlias: string) {
+function assertApprovedCountChange(status: string) {
   getApprovedCount().then((newCount) => {
-    cy.get<number>(approvedCountAlias).then((count) => {
+    cy.get('@approvedCount').then((count) => {
       if (status === STATUS_APPROVED) {
         cy.wrap(newCount).should('be.greaterThan', count);
       } else {

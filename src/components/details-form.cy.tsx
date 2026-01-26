@@ -109,9 +109,8 @@ describe('DetailsForm', () => {
     // Wait for calendar to be visible
     cy.findByRole('grid').should('be.visible');
 
-    // TODO: Select a date (20th of the month)
+    // Select a date (20th of the month)
     cy.findByRole('gridcell', { name: /20/ }).click();
-    // cy.get('.rdp-day').contains('20').click();
 
     // Calendar should be closed
     cy.findByRole('grid').should('not.exist');
@@ -139,8 +138,7 @@ describe('DetailsForm', () => {
     cy.findByLabelText(LABELS.status).click();
     cy.findByRole('option', { name: /approved/i }).click();
 
-    // custom command
-    // cy.findByRole('button', { name: /save changes/i }).click();
+    // Custom command
     cy.findByButton(/save changes/i).click();
 
     // Check if onSubmit was called

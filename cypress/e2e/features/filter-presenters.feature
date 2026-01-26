@@ -5,17 +5,17 @@ Feature: Filter Presenters
     And the filters panel is visible
     And there are multiple presenters in the table
 
-  Scenario: Combining multiple filters displays matching presenters
+  Scenario: Find presenters using multiple criteria
     When the user filters by name with "Roderic"
     And the user filters by status "approved"
     Then the table should only display presenters matching "Roderic" and "approved"
     And the table should show at least one row
 
-  Scenario: Filters with no matches display empty state
+  Scenario: Inform the user when no results match the filters
     When the user filters by name with "NonExistentName123"
     Then the table should display "No results"
 
-  Scenario: Resetting filters clears all filters and displays all presenters
+  Scenario: Restore the full list by resetting all filters
     When the user filters by name with "NonExistentName123"
     And the user resets all filters
     Then the table should display all presenters
