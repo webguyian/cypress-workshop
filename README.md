@@ -2,6 +2,27 @@
 
 This project is a hands-on Cypress workshop using React, TypeScript, and Vite. It demonstrates best practices for both E2E and component testing.
 
+## Getting Started
+
+Follow these steps to set up the project and start the workshop:
+
+1. **Install dependencies:**
+
+   ```sh
+   npm ci
+   ```
+
+2. **Start the application:**
+
+   ```sh
+   npm run dev
+   ```
+
+3. **Open Cypress UI:**
+   ```sh
+   npm run cypress:open
+   ```
+
 ## E2E Scenarios Covered
 
 - **Approve Presenter**: Approving a presenter updates their status correctly.
